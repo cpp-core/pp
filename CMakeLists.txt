@@ -52,7 +52,9 @@ add_compile_options(-O)
 add_link_options(-stdlib=libc++)
 
 add_library(cxx_core_pp INTERFACE)
-target_include_directories(cxx_core_pp INTERFACE include)
+target_include_directories(cxx_core_pp INTERFACE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # set(SOURCES
 #   )
@@ -77,6 +79,10 @@ target_include_directories(cxx_core_pp INTERFACE include)
 #
 if(CORE_PP_TEST)
   enable_testing()
+  if (NOT TARGET build_and_test)
+    add_custom_target(build_and_test ${CMAKE_CTEST_COMMAND})
+    add_custom_target(build_and_test_detail ${CMAKE_CTEST_COMMAND} -V)
+  endif()
   add_subdirectory(test)
 endif()
 
