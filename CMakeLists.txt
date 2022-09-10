@@ -29,6 +29,7 @@ option(CORE_PP_DOCS "Generate the docs." OFF)
 
 # Add our dependencies
 #
+include(GNUInstallDirs)
 add_subdirectory(extern/cxx-depends)
 
 # Output configuration
@@ -79,9 +80,9 @@ target_include_directories(cxx_core_pp INTERFACE
 #
 if(CORE_PP_TEST)
   enable_testing()
-  if (NOT TARGET build_and_test)
-    add_custom_target(build_and_test ${CMAKE_CTEST_COMMAND})
-    add_custom_target(build_and_test_detail ${CMAKE_CTEST_COMMAND} -V)
+  if (NOT TARGET check)
+    add_custom_target(check ${CMAKE_CTEST_COMMAND})
+    add_custom_target(check_detail ${CMAKE_CTEST_COMMAND} -V)
   endif()
   add_subdirectory(test)
 endif()
@@ -91,3 +92,42 @@ endif()
 if(CORE_PP_DOCS)
   add_subdirectory(docs)
 endif()
+
+# Installation
+#
+install(TARGETS cxx_core_pp
+  EXPORT ${PROJECT_NAME}_Targets
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+# The CMake config installation
+#
+set(CORE_PP_CONFIG_VERSION_NAME "${PROJECT_NAME}ConfigVersion.cmake")
+set(CORE_PP_CONFIG_NAME "${PROJECT_NAME}Config.cmake")
+set(CORE_PP_CONFIG_FILE_IN "${PROJECT_SOURCE_DIR}/cmake/${CORE_PP_CONFIG_NAME}.in")
+set(CORE_PP_CONFIG_FILE "${PROJECT_BINARY_DIR}/${CORE_PP_CONFIG_NAME}")
+
+message("-- cxx-core-pp: CORE_PP_CONFIG_VERSION_NAME ${CORE_PP_CONFIG_VERSION_NAME}")
+message("-- cxx-core-pp: CORE_PP_CONFIG_NAME ${CORE_PP_CONFIG_NAME}")
+message("-- cxx-core-pp: CORE_PP_CONFIG_FILE ${CORE_PP_CONFIG_FILE}")
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(${CORE_PP_CONFIG_VERSION_NAME}
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY SameMajorVersion)
+
+configure_package_config_file(${CORE_PP_CONFIG_FILE_IN} ${CORE_PP_CONFIG_FILE}
+  INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+install(EXPORT ${PROJECT_NAME}_Targets
+        FILE ${PROJECT_NAME}Targets.cmake
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+install(FILES
+  "${CORE_PP_CONFIG_FILE}"
+  "${PROJECT_BINARY_DIR}/${CORE_PP_CONFIG_VERSION_NAME}"
+  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/core/pp DESTINATION include/core)
