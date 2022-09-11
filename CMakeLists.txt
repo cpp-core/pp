@@ -68,6 +68,10 @@ if(CORE_PP_DOCS)
   add_subdirectory(docs)
 endif()
 
+# Install header files
+#
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/core/pp DESTINATION include/core)
+
 # Install config
 #
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/helpers.cmake)
