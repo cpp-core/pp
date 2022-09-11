@@ -33,8 +33,7 @@ message("-- cxx-core-pp: Configuration: ${CMAKE_CURRENT_SOURCE_DIR}")
 message("-- cxx-core-pp: Included from: ${CMAKE_SOURCE_DIR}")
 message("-- cxx-core-pp: CORE_MP_TEST ${CORE_PP_TEST}")
 message("-- cxx-core-pp: CORE_MP_DOCS ${CORE_PP_DOCS}")
-message("-- cxx-core-pp: DEPENDS_BUILD_DIR ${DEPENDS_BUILD_DIR}")
-message("-- cxx-core-pp: DEPENDS_INSTALL_DIR ${DEPENDS_INSTALL_DIR}")
+message("-- cxx-core-pp: CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
 
 # Compilation
 #
@@ -69,41 +68,7 @@ if(CORE_PP_DOCS)
   add_subdirectory(docs)
 endif()
 
-# Installation
+# Install config
 #
-include(GNUInstallDirs)
-
-install(TARGETS cxx_core_pp
-  EXPORT ${PROJECT_NAME}_Targets
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR})
-
-set(CONFIG_VERSION_NAME "${PROJECT_NAME}ConfigVersion.cmake")
-set(CONFIG_NAME "${PROJECT_NAME}Config.cmake")
-set(CONFIG_FILE_IN "${PROJECT_SOURCE_DIR}/cmake/${CONFIG_NAME}.in")
-set(CONFIG_FILE "${PROJECT_BINARY_DIR}/${CONFIG_NAME}")
-
-message("-- cxx-core-pp: CONFIG_VERSION_NAME ${CONFIG_VERSION_NAME}")
-message("-- cxx-core-pp: CONFIG_NAME ${CONFIG_NAME}")
-message("-- cxx-core-pp: CONFIG_FILE ${CONFIG_FILE}")
-
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(${CONFIG_VERSION_NAME}
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMajorVersion)
-
-configure_package_config_file(${CONFIG_FILE_IN} ${CONFIG_FILE}
-  INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
-
-install(EXPORT ${PROJECT_NAME}_Targets
-        FILE ${PROJECT_NAME}Targets.cmake
-        NAMESPACE ${PROJECT_NAME}::
-        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
-
-install(FILES
-  "${CONFIG_FILE}"
-  "${PROJECT_BINARY_DIR}/${CONFIG_VERSION_NAME}"
-  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
-
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/core/pp DESTINATION include/core/)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/helpers.cmake)
+install_config(cxx_core_pp)
