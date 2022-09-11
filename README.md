@@ -19,5 +19,3 @@ Primitives for using the preprocessor in a structured fashion.
 	mkdir cxx-depends/build && cd cxx-depends/build
     CC=clang-mp-11 CXX=clang++-mp-11 cmake -DCMAKE_INSTALL_PREFIX=$HOME/opt ..
 	make cxx_core_pp # Will build and install
-	
-	

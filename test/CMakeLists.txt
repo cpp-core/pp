@@ -17,7 +17,7 @@ foreach(NAME ${TESTS})
   set(TEST_NAME test_${CATNAME})
   set(TEST_FILE ${PROJECT_SOURCE_DIR}/test/src/core/${DIRNAME}/test_${CATNAME}.cpp)
 
-  add_executable(${TEST_NAME} ${TEST_FILE})
+  add_executable(${TEST_NAME} EXCLUDE_FROM_ALL ${TEST_FILE})
   add_test(${TEST_NAME} bin/${TEST_NAME})
   
   target_link_libraries(${TEST_NAME}
