@@ -74,5 +74,5 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/core/pp DESTINATION includ
 
 # Install config
 #
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/helpers.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(cxx_core_pp)
