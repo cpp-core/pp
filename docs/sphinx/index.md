@@ -82,6 +82,14 @@ make cxx_core_pp_docs # root of html tree is docs/html/index.html
 
 ```{toctree}
 ---
+caption: API REFERENCE
+---
+api/list
+api/utilities
+```
+
+```{toctree}
+---
 caption: FILE REFERENCE
 maxdepth: 5
 ---
