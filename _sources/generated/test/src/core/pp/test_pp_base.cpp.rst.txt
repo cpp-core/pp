@@ -1,0 +1,205 @@
+
+
+.. _test/src/core/pp/test_pp_base.cpp:
+
+test_pp_base.cpp
+=====================================
+
+.. code-block:: cpp
+
+    // Copyright (C) 2019 by Mark Melton
+    //
+    
+    #include <gtest/gtest.h>
+    #include "core/pp/pp.h"
+    
+    TEST(PP, Empty)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EMPTY()), "");
+    }
+    
+    TEST(PP, COMMA)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_COMMA()), ",");
+    }
+    
+    TEST(PP, PAREN)
+    {
+        EXPECT_EQ(3 * CORE_PP_LPAREN() 1 + 2 CORE_PP_RPAREN(), 9);
+    }
+    
+    #define CORE_PP_TEST_EVAL_INNER(x) x+1
+    #define CORE_PP_TEST_EVAL_EMPTY
+    #define CORE_PP_TEST_EVAL(x) CORE_PP_TEST_EVAL_INNER CORE_PP_TEST_EVAL_EMPTY (x)
+    TEST(PP, EVAL)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_TEST_EVAL(2)), "CORE_PP_TEST_EVAL_INNER (2)");
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL(CORE_PP_TEST_EVAL(2))), "2+1");
+    }
+    #undef CORE_PP_TEST_EVAL_INNER
+    #undef CORE_PP_TEST_EVAL_EMPTY
+    #undef CORE_PP_TEST_EVAL
+    
+    TEST(PP, DEFER)
+    {
+        
+    }
+    
+    TEST(PP, STRINGIZE)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(abc), "abc");
+        EXPECT_EQ(CORE_PP_STRINGIZE(abc, def), "abc, def");
+    }
+    
+    TEST(PP, CAT)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_CAT(1,2)), "12");
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_CATN(1,2,3)), "12,3");
+    }
+    
+    TEST(PP, UNPAREN)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_UNPAREN(1,2)), "1,2");
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_UNPAREN((1,2))), "1,2");
+    }
+    
+    TEST(PP, LIST)
+    {
+        EXPECT_EQ(CORE_PP_HEAD(1,2,3), 1);
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_REST(1,2,3)), "2,3");
+        EXPECT_EQ(CORE_PP_SECOND(1,2,3), 2);
+        EXPECT_EQ(CORE_PP_THIRD(1,2,3), 3);
+    }
+    
+    TEST(PP, SEQ)
+    {
+        EXPECT_EQ(CORE_PP_HEAD_SEQ((1,2,3)), 1);
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_REST_SEQ((1,2,3))), "(2,3)");
+        EXPECT_EQ(CORE_PP_SECOND_SEQ((1,2,3)), 2);
+        EXPECT_EQ(CORE_PP_THIRD_SEQ((1,2,3)), 3);
+    
+        EXPECT_EQ(CORE_PP_IS_SEQ(), 0);
+        EXPECT_EQ(CORE_PP_IS_SEQ(a), 0);
+        EXPECT_EQ(CORE_PP_IS_SEQ(a,b), 0);
+        EXPECT_EQ(CORE_PP_IS_SEQ(()), 1);
+        EXPECT_EQ(CORE_PP_IS_SEQ((a)), 1);
+        EXPECT_EQ(CORE_PP_IS_SEQ((a,b)), 1);
+    
+        EXPECT_EQ(CORE_PP_HEAD_LIST_OR_SEQ(1), 1);
+        EXPECT_EQ(CORE_PP_HEAD_LIST_OR_SEQ(1,2), 1);
+        EXPECT_EQ(CORE_PP_HEAD_LIST_OR_SEQ((1)), 1);
+        EXPECT_EQ(CORE_PP_HEAD_LIST_OR_SEQ((1,2)), 1);
+    }
+    
+    TEST(PP, COUNT)
+    {
+        EXPECT_EQ(CORE_PP_COUNT(), 0);
+        EXPECT_EQ(CORE_PP_COUNT(1), 1);
+        EXPECT_EQ(CORE_PP_COUNT(1,2), 2);
+        EXPECT_EQ(CORE_PP_COUNT((1,2),(2,3)), 2);
+        EXPECT_EQ(CORE_PP_COUNT((1,2),(2,3),(3,4)), 3);
+    
+        EXPECT_EQ(CORE_PP_COUNT_SEQ((1)), 1);
+        EXPECT_EQ(CORE_PP_COUNT_SEQ((1,2)), 2);
+        EXPECT_EQ(CORE_PP_COUNT_SEQ((1,2,3)), 3);
+        EXPECT_EQ(CORE_PP_COUNT_SEQ(((1,2),(2,3),(3,4))), 3);
+    }
+    
+    TEST(PP, BOOL)
+    {
+        EXPECT_EQ(CORE_PP_BOOL(0), 0);
+        EXPECT_EQ(CORE_PP_BOOL(1), 1);
+        EXPECT_EQ(CORE_PP_BOOL(2), 1);
+    }
+    
+    TEST(PP, IF)
+    {
+        EXPECT_EQ(CORE_PP_IF(1)(7), 7);
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_IF(0)(7)), "");
+    }
+    
+    TEST(PP, IF_ELSE)
+    {
+        EXPECT_EQ(CORE_PP_IF_ELSE(1)(7,8), 7);
+        EXPECT_EQ(CORE_PP_IF_ELSE(0)(7,8), 8);
+    }
+    
+    TEST(PP, HAS_ARGS)
+    {
+        EXPECT_EQ(CORE_PP_HAS_ARGS(), 0);
+        EXPECT_EQ(CORE_PP_HAS_ARGS(a), 1);
+        EXPECT_EQ(CORE_PP_HAS_ARGS(a,b), 1);
+        EXPECT_EQ(CORE_PP_HAS_ARGS((a,b)), 1);
+    }
+    
+    #define CORE_PP_TEST_ITEM(a) Tensor ## a ## n<uint,a>;
+    TEST(PP, MAP)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP(CORE_PP_TEST_ITEM, 1, 2, 3)),
+                  "Tensor1n<uint,1>; Tensor2n<uint,2>; Tensor3n<uint,3>;");
+    }
+    #undef CORE_PP_TEST_ITEM
+    
+    
+    TEST(PP, MAP_SEQ)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP_SEQ(CORE_PP_HEAD_SEQ, ((1,2), (2,3)))), "1 2");
+    }
+    
+    #define CORE_PP_TEST_ITEM(a,b) Tensor ## b ## n<a,b>;
+    TEST(PP, MAPN)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAPN(CORE_PP_TEST_ITEM, (uint,1), (uint,2), (int,1))),
+                  "Tensor1n<uint,1>; Tensor2n<uint,2>; Tensor1n<int,1>;");
+    }
+    #undef CORE_PP_TEST_ITEM
+    
+    TEST(PP, MAPN_SEQ)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAPN_SEQ(int, (a;, b;, c;))), "int a; int b; int c;");
+    }
+    
+    #define CORE_PP_TEST_ITEM(x) x x
+    TEST(PP, MAP_INFIX)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP_INFIX(CORE_PP_TEST_ITEM, CORE_PP_COMMA, a, b, c)),
+                  "a a , b b , c c");
+    }
+    #undef CORE_PP_TEST_ITEM
+    
+    TEST(PP, MAP_INFIX_SEQ)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP_INFIX_SEQ(CORE_PP_SECOND_SEQ, CORE_PP_COMMA,
+                                                               ((a, 1), (b, 2), (c, 3)))),
+                  "1 , 2 , 3");
+    }
+    
+    #define CORE_PP_TEST_ITEM(name, value) name::value,
+    TEST(PP, MAP_WITH)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP_WITH(CORE_PP_TEST_ITEM, Foo, a, b, c)),
+                  "Foo::a, Foo::b, Foo::c,");
+    }
+    #undef CORE_PP_TEST_ITEM
+    
+    #define CORE_PP_TEST_ITEM(name, seq) name::CORE_PP_SECOND_SEQ(seq),
+    TEST(PP, MAP_WITH_SEQ)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_MAP_WITH_SEQ(CORE_PP_TEST_ITEM, Foo,
+                                                              ((1, a), (2, b), (3, c)))),
+                  "Foo::a, Foo::b, Foo::c,");
+    }
+    #undef CORE_PP_TEST_ITEM
+    
+    TEST(PP, CARTESIAN_PRODUCT)
+    {
+        EXPECT_EQ(CORE_PP_STRINGIZE(CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ((a,b,c), (1,2,3))),
+                  "( (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3), )");
+        
+    }
+    
+    int main(int argc, char *argv[])
+    {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    }

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>map.h &mdash; cxx-core-pp  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="pp.h" href="pp.h.html" />
+    <link rel="prev" title="list.h" href="list.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> cxx-core-pp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../dir.html">include/</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../dir.html">core/</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dir.html">pp/</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="args.h.html">args.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base.h.html">base.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bool.h.html">bool.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cat.h.html">cat.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="count.h.html">count.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defer.h.html">defer.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eval.h.html">eval.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ifelse.h.html">ifelse.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list.h.html">list.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">map.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pp.h.html">pp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="product.h.html">product.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="seq.h.html">seq.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stringize.h.html">stringize.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unparen.h.html">unparen.h</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../test/dir.html">test/</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">cxx-core-pp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../dir.html">include</a> &raquo;</li>
+          <li><a href="../dir.html">core</a> &raquo;</li>
+          <li><a href="dir.html">pp</a> &raquo;</li>
+      <li>map.h</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/generated/include/core/pp/map.h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="map-h">
+<span id="include-core-pp-map-h"></span><h1>map.h<a class="headerlink" href="#map-h" title="Permalink to this heading">¶</a></h1>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<span class="c1">//</span>
+
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/args.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/defer.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/eval.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/ifelse.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/unparen.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// #define DOUBLER(x) x x</span>
+<span class="c1">// MAP(DOUBLER, 1, 2, 3) == 1 1 2 2 3 3</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP(m, first, ...)                                \</span>
+<span class="cp">    m(first)                                                        \</span>
+<span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                \</span>
+<span class="cp">    (CORE_PP_DEFER2(_CORE_PP_MAP)()(m, __VA_ARGS__),)</span>
+<span class="cp">#define _CORE_PP_MAP() CORE_PP_MAP</span>
+<span class="cp">#define CORE_PP_EVAL_MAP(m, first, ...) CORE_PP_EVAL(CORE_PP_MAP(m, first, __VA_ARGS__))</span>
+
+<span class="c1">// MAP(CORE_PP_HEAD, ((1, 2), (2, 3))) == 1 2</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP_SEQ(m, seq) _CORE_PP_MAP_SEQ(m, CORE_PP_UNPAREN(seq))</span>
+<span class="cp">#define _CORE_PP_MAP_SEQ(m, ...) CORE_PP_MAP(m, __VA_ARGS__)</span>
+<span class="cp">#define CORE_PP_EVAL_MAP_SEQ(m, seq) CORE_PP_EVAL(CORE_PP_MAP_SEQ(m, seq))</span>
+
+<span class="c1">// MAPN(int, a, b, c) == int a int b int c</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAPN(m, first, ...)                                \</span>
+<span class="cp">    m first                                                        \</span>
+<span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                \</span>
+<span class="cp">        (CORE_PP_DEFER2(_CORE_PP_MAPN)()(m, __VA_ARGS__),)</span>
+<span class="cp">#define _CORE_PP_MAPN() CORE_PP_MAPN</span>
+<span class="cp">#define CORE_PP_EVAL_MAPN(m, first, ...) CORE_PP_EVAL(CORE_PP_MAPN(m, first, __VA_ARGS__))</span>
+
+<span class="cp">#define CORE_PP_MAPN_SEQ(m, seq) _CORE_PP_MAPN_SEQ(m, CORE_PP_UNPAREN(seq))</span>
+<span class="cp">#define _CORE_PP_MAPN_SEQ(m, ...) CORE_PP_MAPN(m, __VA_ARGS__)</span>
+<span class="cp">#define CORE_PP_EVAL_MAPN_SEQ(m, seq) CORE_PP_EVAL(CORE_PP_MAPN_SEQ(m, seq))</span>
+
+<span class="c1">// #define DOUBLER(x) x x</span>
+<span class="c1">// MAP_INFIX(DOUBLER, CORE_PP_COMMA, a, b, c) == a a , b b , c c</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP_INFIX(m, infix, first, ...)                                \</span>
+<span class="cp">    m(first)                                                                \</span>
+<span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                        \</span>
+<span class="cp">    (infix() CORE_PP_DEFER2(_CORE_PP_MAP_INFIX)()(m, infix, __VA_ARGS__),)</span>
+<span class="cp">#define _CORE_PP_MAP_INFIX() CORE_PP_MAP_INFIX</span>
+<span class="cp">#define CORE_PP_EVAL_MAP_INFIX(m, infix, first, ...)                        \</span>
+<span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_INFIX(m, infix, first, __VA_ARGS__))</span>
+
+<span class="c1">// MAP_INFIX_SEQ(SECOND_SEQ, CORE_PP_COMMA, ((a 1), (b 2), (c 3))) == 1 , 2 , 3</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP_INFIX_SEQ(m, infix, seq) _CORE_PP_MAP_INFIX_SEQ(m, infix, CORE_PP_UNPAREN(seq))</span>
+<span class="cp">#define _CORE_PP_MAP_INFIX_SEQ(m, infix, ...) CORE_PP_MAP_INFIX(m, infix, __VA_ARGS__)</span>
+<span class="cp">#define CORE_PP_EVAL_MAP_INFIX_SEQ(m, infix, seq)        \</span>
+<span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_INFIX_SEQ(m, infix, seq))</span>
+
+<span class="c1">// #define QUALIFY(name, value) name::value</span>
+<span class="c1">// MAP_WITH(QUALITY, Foo, a, b, c) == Foo::a , Foo::b , Foo::c</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP_WITH(m, data, first, ...)                                \</span>
+<span class="cp">    m(data, first)                                                        \</span>
+<span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                        \</span>
+<span class="cp">    (CORE_PP_DEFER2(_CORE_PP_MAP_WITH)()(m, data, __VA_ARGS__),)</span>
+<span class="cp">#define _CORE_PP_MAP_WITH() CORE_PP_MAP_WITH</span>
+<span class="cp">#define CORE_PP_EVAL_MAP_WITH(m, data, first, ...)                \</span>
+<span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_WITH(m, data, first, __VA_ARGS__))</span>
+
+<span class="c1">// #define QUALIFY(name, seq) name::SECOND_SEQ(seq),</span>
+<span class="c1">// MAP_WITH_SEQ(QUALIFY, Foo, ((1, a), (2, b), (3, c))) == Foo::a, Foo::b, Foo::c</span>
+<span class="c1">//</span>
+<span class="cp">#define CORE_PP_MAP_WITH_SEQ(m, data, seq) _CORE_PP_MAP_WITH_SEQ(m, data, CORE_PP_UNPAREN(seq))</span>
+<span class="cp">#define _CORE_PP_MAP_WITH_SEQ(m, data, ...) CORE_PP_MAP_WITH(m, data, __VA_ARGS__)</span>
+<span class="cp">#define CORE_PP_EVAL_MAP_WITH_SEQ(m, data, seq) CORE_PP_EVAL(CORE_PP_MAP_WITH_SEQ(m, data, seq))</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="list.h.html" class="btn btn-neutral float-left" title="list.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pp.h.html" class="btn btn-neutral float-right" title="pp.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, 2022, Mark Melton.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

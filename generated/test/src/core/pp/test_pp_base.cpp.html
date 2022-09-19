@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test_pp_base.cpp &mdash; cxx-core-pp  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="prev" title="pp" href="dir.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> cxx-core-pp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../include/dir.html">include/</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../dir.html">test/</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../dir.html">src/</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../dir.html">core/</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dir.html">pp/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">cxx-core-pp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../dir.html">test</a> &raquo;</li>
+          <li><a href="../../dir.html">src</a> &raquo;</li>
+          <li><a href="../dir.html">core</a> &raquo;</li>
+          <li><a href="dir.html">pp</a> &raquo;</li>
+      <li>test_pp_base.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/generated/test/src/core/pp/test_pp_base.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-pp-base-cpp">
+<span id="test-src-core-pp-test-pp-base-cpp"></span><h1>test_pp_base.cpp<a class="headerlink" href="#test-pp-base-cpp" title="Permalink to this heading">¶</a></h1>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright (C) 2019 by Mark Melton</span>
+<span class="c1">//</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">Empty</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EMPTY</span><span class="p">()),</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">COMMA</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_COMMA</span><span class="p">()),</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">PAREN</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">CORE_PP_LPAREN</span><span class="p">()</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="n">CORE_PP_RPAREN</span><span class="p">(),</span> <span class="mi">9</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define CORE_PP_TEST_EVAL_INNER(x) x+1</span>
+<span class="cp">#define CORE_PP_TEST_EVAL_EMPTY</span>
+<span class="cp">#define CORE_PP_TEST_EVAL(x) CORE_PP_TEST_EVAL_INNER CORE_PP_TEST_EVAL_EMPTY (x)</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">EVAL</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;CORE_PP_TEST_EVAL_INNER (2)&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">))),</span> <span class="s">&quot;2+1&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_EVAL_INNER</span>
+<span class="cp">#undef CORE_PP_TEST_EVAL_EMPTY</span>
+<span class="cp">#undef CORE_PP_TEST_EVAL</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">DEFER</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">STRINGIZE</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">),</span> <span class="s">&quot;abc&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">,</span> <span class="n">def</span><span class="p">),</span> <span class="s">&quot;abc, def&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">CAT</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;12&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="s">&quot;12,3&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">UNPAREN</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;1,2&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))),</span> <span class="s">&quot;1,2&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">LIST</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="s">&quot;2,3&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">SEQ</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span> <span class="s">&quot;(2,3)&quot;</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(()),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">IF</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">),</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">)),</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">IF_ELSE</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">8</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">HAS_ARGS</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define CORE_PP_TEST_ITEM(a) Tensor ## a ## n&lt;uint,a&gt;;</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+              <span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor3n&lt;uint,3&gt;;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_ITEM</span>
+
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_SEQ</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_SEQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)))),</span> <span class="s">&quot;1 2&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define CORE_PP_TEST_ITEM(a,b) Tensor ## b ## n&lt;a,b&gt;;</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAPN</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="mi">1</span><span class="p">))),</span>
+              <span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor1n&lt;int,1&gt;;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_ITEM</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAPN_SEQ</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN_SEQ</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">;,</span> <span class="n">b</span><span class="p">;,</span> <span class="n">c</span><span class="p">;))),</span> <span class="s">&quot;int a; int b; int c;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define CORE_PP_TEST_ITEM(x) x x</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_INFIX</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span>
+              <span class="s">&quot;a a , b b , c c&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_ITEM</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_INFIX_SEQ</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX_SEQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span>
+                                                           <span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))),</span>
+              <span class="s">&quot;1 , 2 , 3&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define CORE_PP_TEST_ITEM(name, value) name::value,</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_WITH</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span>
+              <span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_ITEM</span>
+
+<span class="cp">#define CORE_PP_TEST_ITEM(name, seq) name::CORE_PP_SECOND_SEQ(seq),</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_WITH_SEQ</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH_SEQ</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span>
+                                                          <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="p">)))),</span>
+              <span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#undef CORE_PP_TEST_ITEM</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">CARTESIAN_PRODUCT</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span>
+              <span class="s">&quot;( (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3), )&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nf">RUN_ALL_TESTS</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dir.html" class="btn btn-neutral float-left" title="pp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, 2022, Mark Melton.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
