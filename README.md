@@ -4,6 +4,8 @@
 
 Primitives for using the preprocessor in a structured fashion.
 
+[Documentation](https://melton1968.github.io/cxx-core-pp/)
+
 ## Installation
 
 ### Standalone
