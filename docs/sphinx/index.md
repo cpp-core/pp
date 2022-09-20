@@ -35,22 +35,6 @@ template<> class MyClass<int>; template<> class MyClass<long int>; template<> cl
 Yes, I know, if only we could get the proprocessor to emit some
 newlines. Like I said, don't go there unless you must.
 
-# Background
-
-*cxx-core-pp* is part of the *cxx-core** family of C++20 based
-libraries. The *cxx-core* libraries have two primary goals:
-
-- **Ergonomics**. In the spirit of the `CppCoreGuideLines`, cxx-core
-  aspires to facilitate writing concise, idiomatic code not by force,
-  but by providing a clear path that produces robust, easy to read
-  code. Good code should be fun to write.
-  
-- **Components**. Modern language platforms provide broad support for
-  first-class library components, while C++ has traditionally only
-  provided a very minimal standard library. *cxx-core* aspires to
-  provide support for a broad range of libraries that feel like part
-  of the language.
-
 # Installation
 
 ## Standalone
@@ -79,6 +63,24 @@ To build the documentation (requires doxygen and sphinx-build to be installed)::
 CC=clang-11 CXX=clang++11 cmake -DCORE_DOCS ..
 make cxx_core_pp_docs # root of html tree is docs/html/index.html
 ```
+
+# Background
+
+*cxx-core-pp* is part of the *cxx-core** family of C++20 based
+libraries. The *cxx-core* libraries have two primary goals:
+
+- **Ergonomics**. In the spirit of the `CppCoreGuideLines`, cxx-core
+  aspires to facilitate writing concise, idiomatic code not by force,
+  but by providing a clear path that produces robust, easy to read
+  code. Good code should be fun to write.
+  
+- **Components**. Modern language platforms provide broad support for
+  first-class library components, while C++ has traditionally only
+  provided a very minimal standard library. *cxx-core* aspires to
+  provide support for a broad range of libraries that feel like part
+  of the language.
+
+# Appendix
 
 ```{toctree}
 ---
