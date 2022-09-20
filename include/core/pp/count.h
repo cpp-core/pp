@@ -8,7 +8,7 @@
 		      _21, _22, _23, _24, _25, _26, _27, _28, _29, _30,	\
 		      N, ...) N
     
-/// Evaluates to the number of elements in the given list.
+/// Expands to the number of elements in the given list.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -23,7 +23,7 @@
 					 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, \
 					 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-/// Evaluates to the number of elements in the given sequence.
+/// Expands to the number of elements in the given sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp

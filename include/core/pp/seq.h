@@ -4,7 +4,7 @@
 #pragma once
 #include "core/pp/list.h"
 
-/// Evaluates to the first element of the given sequence.
+/// Expands to the first element of the given sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -13,7 +13,7 @@
 /// \endverbatim
 #define CORE_PP_HEAD_SEQ(seq) CORE_PP_HEAD seq
 
-/// Evaluates to a seeuence of the remaining elements of the given
+/// Expands to a seeuence of the remaining elements of the given
 /// sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
@@ -23,7 +23,7 @@
 /// \endverbatim
 #define CORE_PP_REST_SEQ(seq) (CORE_PP_REST seq)
 
-/// Evaluates to the second element of the given sequence.
+/// Expands to the second element of the given sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -32,7 +32,7 @@
 /// \endverbatim
 #define CORE_PP_SECOND_SEQ(seq) CORE_PP_SECOND seq
 
-/// Evaluates to the third element of the given sequence.
+/// Expands to the third element of the given sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -45,7 +45,7 @@
 #define _CORE_PP_ZERO(...) 0
 #define _CORE_PP_IS_ZERO(...) CORE_PP_NOT(CORE_PP_BOOL(CORE_PP_HEAD(__VA_ARGS__)))
 
-/// Evalutes to 1 if the arguments are a sequence, otherwise 0.
+/// Expands to 1 if the arguments are a sequence, otherwise 0.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -58,7 +58,7 @@
 /// \endverbatim
 #define CORE_PP_IS_SEQ(...) _CORE_PP_IS_ZERO(_CORE_PP_ZERO __VA_ARGS__)
 
-/// Evaluates to the first element of the given list or sequence.
+/// Expands to the first element of the given list or sequence.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp

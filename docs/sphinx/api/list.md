@@ -1,11 +1,11 @@
 
-# List
+# Lists
 
 A list is zero or more comma separated items that are not enclosed by
-parentheses (that would be a sequence).
+parentheses (which would make it a sequence).
 
 ```{warning}
-Some list macros may be limited to 30 items in a list.
+Some list macros may be limited to 30 items.
 ```
 
 ```{doxygendefine} CORE_PP_HEAD

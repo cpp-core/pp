@@ -3,22 +3,22 @@
 
 #pragma once
 
-/// Evaluates to nothing.
+/// Expands to nothing.
 ///
 #define CORE_PP_EMPTY()
 
-/// Evaluates to a literal comma character
+/// Expands to a literal comma character
 ///
 #define CORE_PP_COMMA() ,
 
-/// Evaluates to a literal left parenthesis character.
+/// Expands to a literal left parenthesis character.
 ///
 #define CORE_PP_LPAREN() (
 
-/// Evaluates to a literal right parenthesis character.
+/// Expands to a literal right parenthesis character.
 ///
 #define CORE_PP_RPAREN() )
 
-/// Evaluates to the zero-or-more passed arguments.
+/// Expands to the zero-or-more passed arguments.
 ///
 #define CORE_PP_PASS(...) __VA_ARGS__

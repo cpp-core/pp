@@ -3,7 +3,7 @@
 
 #pragma once
 
-/// Evaluates to the concatenation of a and b.
+/// Expands to the concatenation of its two arguments.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -12,8 +12,8 @@
 /// \endverbatim
 #define CORE_PP_CAT(a, b) a ## b
 
-/// Evaluates to the concatenation of a and b sequenced with the
-/// remaining arguments.
+/// Expands to the concatenation of its first row arguments sequenced
+/// with the remaining arguments.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp

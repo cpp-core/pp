@@ -84,7 +84,9 @@ make cxx_core_pp_docs # root of html tree is docs/html/index.html
 ---
 caption: API REFERENCE
 ---
+api/conditional
 api/list
+api/map
 api/sequence
 api/utilities
 ```
