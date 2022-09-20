@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -108,9 +110,15 @@
 
 <span class="cp">#pragma once</span>
 
+<span class="c1">/// Expands to a string of its arguments.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
 <span class="c1">/// Converts arguments into a string.</span>
-<span class="c1">/// STRINGIZE(a) == &quot;a&quot;</span>
-<span class="c1">/// STRINGIZE(a,b) == &quot;a,b&quot;</span>
+<span class="c1">/// CORE_PP_STRINGIZE(a)    // &quot;a&quot;</span>
+<span class="c1">/// CORE_PP_STRINGIZE(a,b)  // &quot;a,b&quot;</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_STRINGIZE1(...) #__VA_ARGS__</span>
 <span class="cp">#define CORE_PP_STRINGIZE(...) CORE_PP_STRINGIZE1(__VA_ARGS__)</span>
 </pre></div>

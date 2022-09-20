@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,21 +105,29 @@
              
   <section id="eval-h">
 <span id="include-core-pp-eval-h"></span><h1>eval.h<a class="headerlink" href="#eval-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 
-<span class="c1">// EVAL - Force the pre-processor to expand the given macro over a</span>
-<span class="c1">// large number of passes.</span>
-<span class="c1">//</span>
-<span class="c1">// #define A(x) x+1</span>
-<span class="c1">// #define EMPTY</span>
-<span class="c1">// #define NEEDS_TWO_PASSES(x) A EMPTY (x)</span>
-<span class="c1">// NEEDS_TWO_PASSES(2)        // A (2)</span>
-<span class="c1">// EVAL(NEEDS_TWO_PASSES(2))  // 2 +1</span>
-<span class="c1">//</span>
+<span class="c1">/// Force the preprocessor to recursively expand the given arguments.</span>
+<span class="c1">///</span>
+<span class="c1">/// Left to its own devices, the preprocessor will not recursively</span>
+<span class="c1">/// expand macros, but will do a single-pass</span>
+<span class="c1">/// substitution. `CORE_PP_EVAL` recursivley expands its arguments up</span>
+<span class="c1">/// to 1024 levels.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// #define A(x) x+1</span>
+<span class="c1">/// #define EMPTY</span>
+<span class="c1">/// #define NEEDS_TWO_PASSES(x) A EMPTY (x)</span>
+<span class="c1">/// NEEDS_TWO_PASSES(2)                // A (2)</span>
+<span class="c1">/// CORE_PP_EVAL(NEEDS_TWO_PASSES(2))  // 2 +1</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL(...) CORE_PP_EVAL1024(__VA_ARGS__)</span>
+
 <span class="cp">#define CORE_PP_EVAL1024(...) CORE_PP_EVAL512(CORE_PP_EVAL512(__VA_ARGS__))</span>
 <span class="cp">#define CORE_PP_EVAL512(...) CORE_PP_EVAL256(CORE_PP_EVAL256(__VA_ARGS__))</span>
 <span class="cp">#define CORE_PP_EVAL256(...) CORE_PP_EVAL128(CORE_PP_EVAL128(__VA_ARGS__))</span>

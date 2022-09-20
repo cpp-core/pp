@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -109,7 +111,7 @@
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/list.h&quot;</span><span class="cp"></span>
 
-<span class="c1">/// Evaluates to the first element of the given sequence.</span>
+<span class="c1">/// Expands to the first element of the given sequence.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -118,7 +120,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HEAD_SEQ(seq) CORE_PP_HEAD seq</span>
 
-<span class="c1">/// Evaluates to a seeuence of the remaining elements of the given</span>
+<span class="c1">/// Expands to a seeuence of the remaining elements of the given</span>
 <span class="c1">/// sequence.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
@@ -128,7 +130,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_REST_SEQ(seq) (CORE_PP_REST seq)</span>
 
-<span class="c1">/// Evaluates to the second element of the given sequence.</span>
+<span class="c1">/// Expands to the second element of the given sequence.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -137,7 +139,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_SECOND_SEQ(seq) CORE_PP_SECOND seq</span>
 
-<span class="c1">/// Evaluates to the third element of the given sequence.</span>
+<span class="c1">/// Expands to the third element of the given sequence.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -150,7 +152,7 @@
 <span class="cp">#define _CORE_PP_ZERO(...) 0</span>
 <span class="cp">#define _CORE_PP_IS_ZERO(...) CORE_PP_NOT(CORE_PP_BOOL(CORE_PP_HEAD(__VA_ARGS__)))</span>
 
-<span class="c1">/// Evalutes to 1 if the arguments are a sequence, otherwise 0.</span>
+<span class="c1">/// Expands to 1 if the arguments are a sequence, otherwise 0.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -163,7 +165,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_IS_SEQ(...) _CORE_PP_IS_ZERO(_CORE_PP_ZERO __VA_ARGS__)</span>
 
-<span class="c1">/// Evaluates to the first element of the given list or sequence.</span>
+<span class="c1">/// Expands to the first element of the given list or sequence.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>

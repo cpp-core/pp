@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -108,7 +110,7 @@
 
 <span class="cp">#pragma once</span>
 
-<span class="c1">/// Evaluates to the first argument.</span>
+<span class="c1">/// Expands to the first argument.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -117,7 +119,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HEAD(a, ...) a</span>
 
-<span class="c1">/// Evaluates to the remaining arguments.</span>
+<span class="c1">/// Expands to the remaining arguments.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -126,7 +128,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_REST(a, ...) __VA_ARGS__</span>
 
-<span class="c1">/// Evaluates to the second argument.</span>
+<span class="c1">/// Expands to the second argument.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>
@@ -135,7 +137,7 @@
 <span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_SECOND(a, b, ...) b</span>
 
-<span class="c1">/// Evaluates to the third argument.</span>
+<span class="c1">/// Expands to the third argument.</span>
 <span class="c1">///</span>
 <span class="c1">/// \verbatim embed:rst:leading-slashes</span>
 <span class="c1">/// ```{code-block} cpp</span>

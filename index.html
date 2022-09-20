@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="List" href="api/list.html" /> 
+    <link rel="next" title="Conditionals" href="api/conditional.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,7 +40,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utilities</a></li>
 </ul>
@@ -92,7 +94,7 @@ types:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#define GEN_MYCLASS(N,T) template&lt;&gt; class N&lt;T&gt;;</span>
-<span class="cp">#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)</span>
+<span class="cp">#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_EVAL_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)</span>
 <span class="cp">#define TYPE_SEQ (int8, int16, int32, int64)</span>
 
 <span class="n">GEN_MYCLASS_SEQ</span><span class="p">(</span><span class="n">TYPE_SEQ</span><span class="p">)</span>
@@ -150,7 +152,13 @@ make cxx_core_pp_docs <span class="c1"># root of html tree is docs/html/index.ht
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/map.html">Map and Product</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/map.html#map">Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/map.html#product">Product</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utilities</a></li>
 </ul>
@@ -204,7 +212,7 @@ make cxx_core_pp_docs <span class="c1"># root of html tree is docs/html/index.ht
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="api/list.html" class="btn btn-neutral float-right" title="List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api/conditional.html" class="btn btn-neutral float-right" title="Conditionals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

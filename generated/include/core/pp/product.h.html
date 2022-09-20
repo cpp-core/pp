@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,15 +105,13 @@
              
   <section id="product-h">
 <span id="include-core-pp-product-h"></span><h1>product.h<a class="headerlink" href="#product-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/eval.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/map.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// CARTESIAN_PRODUCT((a,b,c), (1,2,3)) == ( (a,1) (a,2) (a,3) (b,1) (b,2) (b,3) (c,1) (c,2) (c,3) )</span>
-<span class="c1">//</span>
 <span class="cp">#define _CORE_PP_CARTESIAN_MAP(a, b) (a,b),</span>
 
 <span class="cp">#define _CORE_PP_CARTESIAN_PRODUCT_ITEM_SEQ(bseq, aitem) \</span>
@@ -121,6 +121,14 @@
 <span class="cp">#define CORE_PP_CARTESIAN_PRODUCT_SEQ(aseq, bseq) \</span>
 <span class="cp">    CORE_PP_MAP_WITH_SEQ(_CORE_PP_CARTESIAN_PRODUCT_ITEM_SEQ, bseq, aseq)</span>
 
+<span class="c1">/// Expands to a sequence of sequences representing the cartesian product of the</span>
+<span class="c1">/// two given sequences.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ((a,b,c),(1,2)) // ((a,1),(a,2),(b,1),(b,2),(c,1),(c,2))</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ(aseq, bseq) \</span>
 <span class="cp">    CORE_PP_EVAL(CORE_PP_LPAREN() CORE_PP_CARTESIAN_PRODUCT_SEQ(aseq, bseq) CORE_PP_RPAREN())</span>
 </pre></div>

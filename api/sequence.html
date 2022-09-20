@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Utilities" href="utilities.html" />
-    <link rel="prev" title="List" href="list.html" /> 
+    <link rel="prev" title="Map and Product" href="map.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map.html">Map and Product</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
@@ -83,12 +85,12 @@ passed to macros as single arguments making them an important unit of
 encapsulation in this domain.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Some sequence macros may be limited to 30 items in a sequence.</p>
+<p>Some sequence macros may be limited to 30 items.</p>
 </div>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_IS_SEQ">
 <span class="target" id="seq_8h_1ae5c8ca3dacc63713022e60cfbdf978e6"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_IS_SEQ</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_IS_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evalutes to 1 if the arguments are a sequence, otherwise 0.</p>
+<dd><p>Expands to 1 if the arguments are a sequence, otherwise 0.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_IS_SEQ</span><span class="p">()</span>      <span class="c1">// 0</span>
 <span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="c1">// 0</span>
 <span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>   <span class="c1">// 0</span>
@@ -103,7 +105,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_HEAD_SEQ">
 <span class="target" id="seq_8h_1abf4b1cae0755d40b1c9314eaf15e7e37"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_HEAD_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_HEAD_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to the first element of the given sequence.</p>
+<dd><p>Expands to the first element of the given sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>     <span class="c1">// a</span>
 </pre></div>
 </div>
@@ -114,7 +116,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_REST_SEQ">
 <span class="target" id="seq_8h_1a5fb6a566431cf6a24ca5ce3419fc60db"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_REST_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_REST_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to a seeuence of the remaining elements of the given sequence.</p>
+<dd><p>Expands to a seeuence of the remaining elements of the given sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_REST_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>     <span class="c1">// (b,c)</span>
 </pre></div>
 </div>
@@ -125,7 +127,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_SECOND_SEQ">
 <span class="target" id="seq_8h_1ab4235d4f28e404bb47e45f59bfb8a717"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_SECOND_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_SECOND_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to the second element of the given sequence.</p>
+<dd><p>Expands to the second element of the given sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>   <span class="c1">// b</span>
 </pre></div>
 </div>
@@ -136,7 +138,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_THIRD_SEQ">
 <span class="target" id="seq_8h_1af0c0c71d831a2d03421ac49f86e5869a"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_THIRD_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_THIRD_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to the third element of the given sequence.</p>
+<dd><p>Expands to the third element of the given sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_THIRD_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>    <span class="c1">// c</span>
 </pre></div>
 </div>
@@ -147,7 +149,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_COUNT_SEQ">
 <span class="target" id="count_8h_1aa41bbeb7295c8107ea77ec96d5d428e0"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_COUNT_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_COUNT_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to the number of elements in the given sequence.</p>
+<dd><p>Expands to the number of elements in the given sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">(())</span>          <span class="c1">// 0</span>
 <span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">))</span>         <span class="c1">// 1</span>
 <span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>       <span class="c1">// 2</span>
@@ -162,7 +164,7 @@ encapsulation in this domain.</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CORE_PP_HEAD_LIST_OR_SEQ">
 <span class="target" id="seq_8h_1a755ebf9afbbe00f4f5042b1dbfc58599"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_HEAD_LIST_OR_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">seq_or_value</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_HEAD_LIST_OR_SEQ" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Evaluates to the first element of the given list or sequence.</p>
+<dd><p>Expands to the first element of the given list or sequence.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="o">==</span> <span class="n">a</span>
 <span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>   <span class="o">==</span> <span class="n">a</span>
 <span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">))</span>   <span class="o">==</span> <span class="n">a</span>
@@ -179,7 +181,7 @@ encapsulation in this domain.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="list.html" class="btn btn-neutral float-left" title="List" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="map.html" class="btn btn-neutral float-left" title="Map and Product" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

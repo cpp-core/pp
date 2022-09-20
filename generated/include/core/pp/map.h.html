@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,7 +105,7 @@
              
   <section id="map-h">
 <span id="include-core-pp-map-h"></span><h1>map.h<a class="headerlink" href="#map-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
@@ -113,69 +115,125 @@
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/ifelse.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/unparen.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// #define DOUBLER(x) x x</span>
-<span class="c1">// MAP(DOUBLER, 1, 2, 3) == 1 1 2 2 3 3</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP(m, first, ...)                                \</span>
 <span class="cp">    m(first)                                                        \</span>
 <span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                \</span>
 <span class="cp">    (CORE_PP_DEFER2(_CORE_PP_MAP)()(m, __VA_ARGS__),)</span>
 <span class="cp">#define _CORE_PP_MAP() CORE_PP_MAP</span>
+
+<span class="c1">/// Expands to the macro m applied to each of the remaining arguments.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// #define DOUBLER(x) x x</span>
+<span class="c1">/// CORE_PP_EVAL_MAP(DOUBLER, 1, 2, 3) // 1 1 2 2 3 3</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP(m, first, ...) CORE_PP_EVAL(CORE_PP_MAP(m, first, __VA_ARGS__))</span>
 
-<span class="c1">// MAP(CORE_PP_HEAD, ((1, 2), (2, 3))) == 1 2</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP_SEQ(m, seq) _CORE_PP_MAP_SEQ(m, CORE_PP_UNPAREN(seq))</span>
 <span class="cp">#define _CORE_PP_MAP_SEQ(m, ...) CORE_PP_MAP(m, __VA_ARGS__)</span>
+
+<span class="c1">/// Expands to the macro m applied to each element of the given</span>
+<span class="c1">/// sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_EVAL_MAP_SEQ(CORE_PP_HEAD, ((1, 2), (2, 3))) // 1 2</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP_SEQ(m, seq) CORE_PP_EVAL(CORE_PP_MAP_SEQ(m, seq))</span>
 
-<span class="c1">// MAPN(int, a, b, c) == int a int b int c</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAPN(m, first, ...)                                \</span>
 <span class="cp">    m first                                                        \</span>
 <span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                \</span>
 <span class="cp">        (CORE_PP_DEFER2(_CORE_PP_MAPN)()(m, __VA_ARGS__),)</span>
 <span class="cp">#define _CORE_PP_MAPN() CORE_PP_MAPN</span>
+
+<span class="c1">/// Expands to the macro m prepended to each argument in turn.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_EVAL_MAPN(int, a, b, c) // int a int b int c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAPN(m, first, ...) CORE_PP_EVAL(CORE_PP_MAPN(m, first, __VA_ARGS__))</span>
 
 <span class="cp">#define CORE_PP_MAPN_SEQ(m, seq) _CORE_PP_MAPN_SEQ(m, CORE_PP_UNPAREN(seq))</span>
 <span class="cp">#define _CORE_PP_MAPN_SEQ(m, ...) CORE_PP_MAPN(m, __VA_ARGS__)</span>
+
+<span class="c1">/// Expands to the first element of the given sequence prepended to</span>
+<span class="c1">/// each remianing element of the sequence in turn.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_EVAL_MAPN_SEQ((int, a, b, c)) // int a int b int c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAPN_SEQ(m, seq) CORE_PP_EVAL(CORE_PP_MAPN_SEQ(m, seq))</span>
 
-<span class="c1">// #define DOUBLER(x) x x</span>
-<span class="c1">// MAP_INFIX(DOUBLER, CORE_PP_COMMA, a, b, c) == a a , b b , c c</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP_INFIX(m, infix, first, ...)                                \</span>
 <span class="cp">    m(first)                                                                \</span>
 <span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                        \</span>
 <span class="cp">    (infix() CORE_PP_DEFER2(_CORE_PP_MAP_INFIX)()(m, infix, __VA_ARGS__),)</span>
 <span class="cp">#define _CORE_PP_MAP_INFIX() CORE_PP_MAP_INFIX</span>
+
+<span class="c1">/// Expands to the given macro m applied to each of the arguments</span>
+<span class="c1">/// starting with first interspersed with the macro infix.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// #define DOUBLER(x) x x</span>
+<span class="c1">/// CORE_PP_MAP_INFIX(DOUBLER, CORE_PP_COMMA, a, b, c) // a a , b b , c c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP_INFIX(m, infix, first, ...)                        \</span>
 <span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_INFIX(m, infix, first, __VA_ARGS__))</span>
 
-<span class="c1">// MAP_INFIX_SEQ(SECOND_SEQ, CORE_PP_COMMA, ((a 1), (b 2), (c 3))) == 1 , 2 , 3</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP_INFIX_SEQ(m, infix, seq) _CORE_PP_MAP_INFIX_SEQ(m, infix, CORE_PP_UNPAREN(seq))</span>
 <span class="cp">#define _CORE_PP_MAP_INFIX_SEQ(m, infix, ...) CORE_PP_MAP_INFIX(m, infix, __VA_ARGS__)</span>
+
+<span class="c1">/// Expands to the given macro m applied to each of the arguments</span>
+<span class="c1">/// starting with first interspersed with the macro infix.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_MAP_INFIX_SEQ(SECOND_SEQ, CORE_PP_COMMA, ((a 1), (b 2), (c 3))) // 1 , 2 , 3</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP_INFIX_SEQ(m, infix, seq)        \</span>
 <span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_INFIX_SEQ(m, infix, seq))</span>
 
-<span class="c1">// #define QUALIFY(name, value) name::value</span>
-<span class="c1">// MAP_WITH(QUALITY, Foo, a, b, c) == Foo::a , Foo::b , Foo::c</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP_WITH(m, data, first, ...)                                \</span>
 <span class="cp">    m(data, first)                                                        \</span>
 <span class="cp">    CORE_PP_IF_ELSE(CORE_PP_HAS_ARGS(__VA_ARGS__))                        \</span>
 <span class="cp">    (CORE_PP_DEFER2(_CORE_PP_MAP_WITH)()(m, data, __VA_ARGS__),)</span>
 <span class="cp">#define _CORE_PP_MAP_WITH() CORE_PP_MAP_WITH</span>
+
+<span class="c1">/// Expands to the given macro invoked with the given data paired with</span>
+<span class="c1">/// each subsequent argument in turn.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// #define QUALIFY(name, value) name::value</span>
+<span class="c1">/// CORE_PP_EVAL_MAP_WITH(QUALITY, Foo, a, b, c) // Foo::a , Foo::b , Foo::c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP_WITH(m, data, first, ...)                \</span>
 <span class="cp">    CORE_PP_EVAL(CORE_PP_MAP_WITH(m, data, first, __VA_ARGS__))</span>
 
-<span class="c1">// #define QUALIFY(name, seq) name::SECOND_SEQ(seq),</span>
-<span class="c1">// MAP_WITH_SEQ(QUALIFY, Foo, ((1, a), (2, b), (3, c))) == Foo::a, Foo::b, Foo::c</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_MAP_WITH_SEQ(m, data, seq) _CORE_PP_MAP_WITH_SEQ(m, data, CORE_PP_UNPAREN(seq))</span>
 <span class="cp">#define _CORE_PP_MAP_WITH_SEQ(m, data, ...) CORE_PP_MAP_WITH(m, data, __VA_ARGS__)</span>
+
+<span class="c1">/// Expands to the given macro invoked with the given data paired with</span>
+<span class="c1">/// each element of the given sequence in turn.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// #define QUALIFY(name, seq) name::SECOND_SEQ(seq),</span>
+<span class="c1">/// COre_PP_EVAL_MAP_WITH_SEQ(QUALIFY, Foo, ((1, a), (2, b), (3, c))) // Foo::a, Foo::b, Foo::c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_EVAL_MAP_WITH_SEQ(m, data, seq) CORE_PP_EVAL(CORE_PP_MAP_WITH_SEQ(m, data, seq))</span>
 </pre></div>
 </div>

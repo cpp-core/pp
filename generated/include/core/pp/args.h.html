@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,18 +105,24 @@
              
   <section id="args-h">
 <span id="include-core-pp-args-h"></span><h1>args.h<a class="headerlink" href="#args-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/bool.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// HAS_ARGS() // 0</span>
-<span class="c1">// HAS_ARGS(a) // 1</span>
-<span class="c1">// HAS_ARGS(a,b) // 1</span>
-<span class="c1">// HAS_ARGS((a,b)) // 1</span>
-<span class="c1">//</span>
+<span class="c1">/// Expands to 1 if the macro is passed arguments, 0 otherwise.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_HAS_ARGS()      // 0</span>
+<span class="c1">/// CORE_PP_HAS_ARGS(a)     // 1</span>
+<span class="c1">/// CORE_PP_HAS_ARGS(a,b)   // 1</span>
+<span class="c1">/// CORE_PP_HAS_ARGS((a,b)) // 1</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HAS_ARGS(...) _CORE_PP_HAS_ARGS(CORE_PP_UNPAREN(__VA_ARGS__))</span>
+
 <span class="cp">#define _CORE_PP_HAS_ARGS(...) CORE_PP_BOOL(CORE_PP_HEAD(_CORE_PP_END_OF_ARGUMENTS_ __VA_ARGS__)())</span>
 <span class="cp">#define _CORE_PP_END_OF_ARGUMENTS_() 0</span>
 </pre></div>

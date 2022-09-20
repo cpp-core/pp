@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -108,23 +110,23 @@
 
 <span class="cp">#pragma once</span>
 
-<span class="c1">/// Evaluates to nothing.</span>
+<span class="c1">/// Expands to nothing.</span>
 <span class="c1">///</span>
 <span class="cp">#define CORE_PP_EMPTY()</span>
 
-<span class="c1">/// Evaluates to a literal comma character</span>
+<span class="c1">/// Expands to a literal comma character</span>
 <span class="c1">///</span>
 <span class="cp">#define CORE_PP_COMMA() ,</span>
 
-<span class="c1">/// Evaluates to a literal left parenthesis character.</span>
+<span class="c1">/// Expands to a literal left parenthesis character.</span>
 <span class="c1">///</span>
 <span class="cp">#define CORE_PP_LPAREN() (</span>
 
-<span class="c1">/// Evaluates to a literal right parenthesis character.</span>
+<span class="c1">/// Expands to a literal right parenthesis character.</span>
 <span class="c1">///</span>
 <span class="cp">#define CORE_PP_RPAREN() )</span>
 
-<span class="c1">/// Evaluates to the zero-or-more passed arguments.</span>
+<span class="c1">/// Expands to the zero-or-more passed arguments.</span>
 <span class="c1">///</span>
 <span class="cp">#define CORE_PP_PASS(...) __VA_ARGS__</span>
 </pre></div>

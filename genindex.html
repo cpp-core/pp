@@ -38,7 +38,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/utilities.html">Utilities</a></li>
 </ul>
@@ -81,6 +83,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/conditional.html#c.CORE_PP_BOOL">CORE_PP_BOOL (C macro)</a>
+</li>
       <li><a href="api/list.html#c.CORE_PP_CAT">CORE_PP_CAT (C macro)</a>
 </li>
       <li><a href="api/list.html#c.CORE_PP_CATN">CORE_PP_CATN (C macro)</a>
@@ -91,7 +95,39 @@
 </li>
       <li><a href="api/sequence.html#c.CORE_PP_COUNT_SEQ">CORE_PP_COUNT_SEQ (C macro)</a>
 </li>
+      <li><a href="api/utilities.html#c.CORE_PP_DEFER1">CORE_PP_DEFER1 (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_DEFER2">CORE_PP_DEFER2 (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_DEFER3">CORE_PP_DEFER3 (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_DEFER4">CORE_PP_DEFER4 (C macro)</a>
+</li>
       <li><a href="api/utilities.html#c.CORE_PP_EMPTY">CORE_PP_EMPTY (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_EVAL">CORE_PP_EVAL (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP">CORE_PP_EVAL_MAP (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP_INFIX">CORE_PP_EVAL_MAP_INFIX (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP_INFIX_SEQ">CORE_PP_EVAL_MAP_INFIX_SEQ (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP_SEQ">CORE_PP_EVAL_MAP_SEQ (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP_WITH">CORE_PP_EVAL_MAP_WITH (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAP_WITH_SEQ">CORE_PP_EVAL_MAP_WITH_SEQ (C macro)</a>
+</li>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAPN">CORE_PP_EVAL_MAPN (C macro)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/map.html#c.CORE_PP_EVAL_MAPN_SEQ">CORE_PP_EVAL_MAPN_SEQ (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_HAS_ARGS">CORE_PP_HAS_ARGS (C macro)</a>
 </li>
       <li><a href="api/list.html#c.CORE_PP_HEAD">CORE_PP_HEAD (C macro)</a>
 </li>
@@ -99,11 +135,15 @@
 </li>
       <li><a href="api/sequence.html#c.CORE_PP_HEAD_SEQ">CORE_PP_HEAD_SEQ (C macro)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/conditional.html#c.CORE_PP_IF">CORE_PP_IF (C macro)</a>
+</li>
+      <li><a href="api/conditional.html#c.CORE_PP_IF_ELSE">CORE_PP_IF_ELSE (C macro)</a>
+</li>
       <li><a href="api/sequence.html#c.CORE_PP_IS_SEQ">CORE_PP_IS_SEQ (C macro)</a>
 </li>
       <li><a href="api/utilities.html#c.CORE_PP_LPAREN">CORE_PP_LPAREN (C macro)</a>
+</li>
+      <li><a href="api/conditional.html#c.CORE_PP_NOT">CORE_PP_NOT (C macro)</a>
 </li>
       <li><a href="api/utilities.html#c.CORE_PP_PASS">CORE_PP_PASS (C macro)</a>
 </li>
@@ -117,9 +157,13 @@
 </li>
       <li><a href="api/sequence.html#c.CORE_PP_SECOND_SEQ">CORE_PP_SECOND_SEQ (C macro)</a>
 </li>
+      <li><a href="api/utilities.html#c.CORE_PP_STRINGIZE">CORE_PP_STRINGIZE (C macro)</a>
+</li>
       <li><a href="api/list.html#c.CORE_PP_THIRD">CORE_PP_THIRD (C macro)</a>
 </li>
       <li><a href="api/sequence.html#c.CORE_PP_THIRD_SEQ">CORE_PP_THIRD_SEQ (C macro)</a>
+</li>
+      <li><a href="api/utilities.html#c.CORE_PP_UNPAREN">CORE_PP_UNPAREN (C macro)</a>
 </li>
   </ul></td>
 </tr></table>

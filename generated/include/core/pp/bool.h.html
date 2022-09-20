@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,21 +105,38 @@
              
   <section id="bool-h">
 <span id="include-core-pp-bool-h"></span><h1>bool.h<a class="headerlink" href="#bool-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/cat.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/list.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// BOOL(0) // 0</span>
-<span class="c1">// BOOL(1) // 1</span>
-<span class="c1">// BOOL(123) // 1</span>
-<span class="c1">//</span>
 <span class="cp">#define CORE_PP_IS_PROBE(...) CORE_PP_SECOND(__VA_ARGS__, 0)</span>
 <span class="cp">#define CORE_PP_PROBE() ~, 1</span>
+
+<span class="c1">/// Expands to 0 if the given arguemnt is not false, 1 otherwise.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_NOT(0)   // 1</span>
+<span class="c1">/// CORE_PP_NOT(1)   // 0</span>
+<span class="c1">/// CORE_PP_NOT(123) // 0</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_NOT(x) CORE_PP_IS_PROBE(CORE_PP_CAT(_CORE_PP_NOT_, x))</span>
+
 <span class="cp">#define _CORE_PP_NOT_0 CORE_PP_PROBE()</span>
+
+<span class="c1">/// Expands to 1 if the given argument is not false, 0 otherwise.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_BOOL(0)   // 0</span>
+<span class="c1">/// CORE_PP_BOOL(1)   // 1</span>
+<span class="c1">/// CORE_PP_BOOL(123) // 1</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_BOOL(x) CORE_PP_NOT(CORE_PP_NOT(x))</span>
 </pre></div>
 </div>

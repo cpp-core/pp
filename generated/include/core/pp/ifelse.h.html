@@ -41,7 +41,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/conditional.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/map.html">Map and Product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
 </ul>
@@ -103,25 +105,46 @@
              
   <section id="ifelse-h">
 <span id="include-core-pp-ifelse-h"></span><h1>ifelse.h<a class="headerlink" href="#ifelse-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/cat.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/bool.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// IF(123)(t) // t</span>
-<span class="c1">// IF(0)(t) //</span>
-<span class="c1">//</span>
+<span class="c1">/// Expands to either a macro that returns its arguments (if the given</span>
+<span class="c1">/// condition is true) or a macro that returns nothing (if the given</span>
+<span class="c1">/// condition is false). When invoked with with two pairs of</span>
+<span class="c1">/// parentheses, this acts much like a traditional if statement:</span>
+<span class="c1">/// `CODE_PP_IF(condition)(then-clause)`</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_IF(123)(true) // true</span>
+<span class="c1">/// CORE_PP_IF(0)(true)   //</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_IF(c) _CORE_PP_IF(CORE_PP_BOOL(c))</span>
+
 <span class="cp">#define _CORE_PP_IF(c) CORE_PP_CAT(_CORE_PP_IF_,c)</span>
 <span class="cp">#define _CORE_PP_IF_0(...)</span>
 <span class="cp">#define _CORE_PP_IF_1(...) __VA_ARGS__</span>
 
-<span class="c1">// IF_ELSE(123)(true,false) // true</span>
-<span class="c1">// IF_ELSE(0)(true,false) // false</span>
-<span class="c1">//</span>
+<span class="c1">/// Expands to either a macro that returns its first argument (if the</span>
+<span class="c1">/// given condition is true) or a macro that return its second</span>
+<span class="c1">/// argument (if the given condition is false). When invoked with two</span>
+<span class="c1">/// pairs of parentheses, this works much like a traditional</span>
+<span class="c1">/// if-then-else statement:</span>
+<span class="c1">/// `CODE_PP_IF_ELSE(condition)(then-clause,else-clause)`.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_IF_ELSE(123)(true,false) // true</span>
+<span class="c1">/// CORE_PP_IF_ELSE(0)(true,false)   // false</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_IF_ELSE(c) _CORE_PP_IF_ELSE(CORE_PP_BOOL(c))</span>
+
 <span class="cp">#define _CORE_PP_IF_ELSE(c) CORE_PP_CAT(_CORE_PP_IF_ELSE_, c)</span>
 <span class="cp">#define _CORE_PP_IF_ELSE_0(t,f) f</span>
 <span class="cp">#define _CORE_PP_IF_ELSE_1(t,f) t</span>
