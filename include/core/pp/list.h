@@ -3,7 +3,7 @@
 
 #pragma once
 
-/// Evaluates to the first argument
+/// Evaluates to the first argument.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -21,7 +21,7 @@
 /// \endverbatim
 #define CORE_PP_REST(a, ...) __VA_ARGS__
 
-/// Evaluates to the second argument
+/// Evaluates to the second argument.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
@@ -30,7 +30,7 @@
 /// \endverbatim
 #define CORE_PP_SECOND(a, b, ...) b
 
-/// Evaluates to the third argument
+/// Evaluates to the third argument.
 ///
 /// \verbatim embed:rst:leading-slashes
 /// ```{code-block} cpp
