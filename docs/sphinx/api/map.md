@@ -1,6 +1,12 @@
 
 # Map and Product
 
+There are often mulitple flavors of the map and product macros
+signified by the `EVAL` and `SEQ` components in the macro name. `EVAL`
+indicates that the macro recursively expands the result which is
+typically the desired result. `SEQ` indicates the the macro operates
+on sequences as opposed to lists.
+
 ## Map
 
 ```{doxygendefine} CORE_PP_EVAL_MAP

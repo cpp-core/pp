@@ -39,6 +39,3 @@
 
 ```{doxygendefine} CORE_PP_DEFER4
 ```
-
-```{doxygendefine} CORE_PP_EVAL_CARTESIAN_PRODUCE_SEQ
-```

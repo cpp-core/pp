@@ -20,7 +20,7 @@ types:
 #include "core/pp/pp.h"
 
 #define GEN_MYCLASS(N,T) template<> class N<T>;
-#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)
+#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_EVAL_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)
 #define TYPE_SEQ (int8, int16, int32, int64)
 
 GEN_MYCLASS_SEQ(TYPE_SEQ)
@@ -97,6 +97,5 @@ caption: FILE REFERENCE
 maxdepth: 5
 ---
 include/ <generated/include/dir>
-src/ <generated/src/dir>
 test/ <generated/test/dir>
 ```
