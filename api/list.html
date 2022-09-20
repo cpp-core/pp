@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List &mdash; cxx-core-pp  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sequences" href="sequence.html" />
+    <link rel="prev" title="cxx-core-pp" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> cxx-core-pp
+            <img src="../_static/cxx-core.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../generated/include/dir.html">include/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generated/test/dir.html">test/</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cxx-core-pp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>List</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/list.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="list">
+<h1>List<a class="headerlink" href="#list" title="Permalink to this heading">¶</a></h1>
+<p>A list is zero or more comma separated items that are not enclosed by
+parentheses (that would be a sequence).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some list macros may be limited to 30 items in a list.</p>
+</div>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_HEAD">
+<span class="target" id="list_8h_1a9facc99ccbd7a137e82615150a0f1a20"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_HEAD</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_HEAD" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the first argument.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// a</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_REST">
+<span class="target" id="list_8h_1a927274f24e99d63d56ab53184c1aaf17"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_REST</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_REST" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the remaining arguments.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// b, c</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_SECOND">
+<span class="target" id="list_8h_1aa4b723ff75cde718b25151645580ba6f"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_SECOND</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_SECOND" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the second argument.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// b</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_THIRD">
+<span class="target" id="list_8h_1a0c37b2eaa213f45e3d70d0aea43704bd"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_THIRD</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span>, <span class="n"><span class="pre">c</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_THIRD" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the third argument.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// c</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_CAT">
+<span class="target" id="cat_8h_1aeab783188993cb0308188508fa1ce481"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_CAT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_CAT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the concatenation of a and b.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>   <span class="c1">// ab</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_CATN">
+<span class="target" id="cat_8h_1a4b1f3410bf22656b17dc25304955f4b7"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_CATN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_CATN" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the concatenation of a and b sequenced with the remaining arguments.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// ab, c</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CORE_PP_COUNT">
+<span class="target" id="count_8h_1ab7ce78f6f63473072077d250444aaaf3"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_COUNT</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_COUNT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Evaluates to the number of elements in the given list.</p>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_COUNT</span><span class="p">()</span>          <span class="c1">// 0</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>         <span class="c1">// 1</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>       <span class="c1">// 2</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>     <span class="c1">// 3</span>
+</pre></div>
+</div>
+</p>
+ </p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="cxx-core-pp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sequence.html" class="btn btn-neutral float-right" title="Sequences" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, 2022, Mark Melton.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

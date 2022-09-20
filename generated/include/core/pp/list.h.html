@@ -39,7 +39,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../dir.html">include/</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../dir.html">core/</a><ul class="current">
@@ -97,19 +103,45 @@
              
   <section id="list-h">
 <span id="include-core-pp-list-h"></span><h1>list.h<a class="headerlink" href="#list-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 
-<span class="c1">// HEAD(a, b, c)   // a</span>
-<span class="c1">// REST(a, b, c)   // b,c</span>
-<span class="c1">// SECOND(a, b, c) // b</span>
-<span class="c1">// THIRD(a, b, c)  // c</span>
-<span class="c1">//</span>
+<span class="c1">/// Evaluates to the first argument.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_HEAD(a, b, c)   // a</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HEAD(a, ...) a</span>
+
+<span class="c1">/// Evaluates to the remaining arguments.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_REST(a, b, c)   // b, c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_REST(a, ...) __VA_ARGS__</span>
+
+<span class="c1">/// Evaluates to the second argument.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_SECOND(a, b, c)   // b</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_SECOND(a, b, ...) b</span>
+
+<span class="c1">/// Evaluates to the third argument.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_THIRD(a, b, c)   // c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_THIRD(a, b, c, ...) c</span>
 </pre></div>
 </div>

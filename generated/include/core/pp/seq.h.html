@@ -39,7 +39,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../dir.html">include/</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../dir.html">core/</a><ul class="current">
@@ -97,38 +103,76 @@
              
   <section id="seq-h">
 <span id="include-core-pp-seq-h"></span><h1>seq.h<a class="headerlink" href="#seq-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 <span class="cp">#include</span> <span class="cpf">&quot;core/pp/list.h&quot;</span><span class="cp"></span>
 
-<span class="c1">// HEAD_SEQ((a,b,c))   == a</span>
-<span class="c1">// REST_SEQ((a,b,c))   == (b,c)</span>
-<span class="c1">// SECOND_SEQ((a,b,c)) == b</span>
-<span class="c1">// THIRD_SEQ((a,b,c))  == c</span>
-<span class="c1">//</span>
+<span class="c1">/// Evaluates to the first element of the given sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_HEAD_SEQ((a,b,c))     // a</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HEAD_SEQ(seq) CORE_PP_HEAD seq</span>
+
+<span class="c1">/// Evaluates to a seeuence of the remaining elements of the given</span>
+<span class="c1">/// sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_REST_SEQ((a,b,c))     // (b,c)</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_REST_SEQ(seq) (CORE_PP_REST seq)</span>
+
+<span class="c1">/// Evaluates to the second element of the given sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_SECOND_SEQ((a,b,c))   // b</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_SECOND_SEQ(seq) CORE_PP_SECOND seq</span>
+
+<span class="c1">/// Evaluates to the third element of the given sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_THIRD_SEQ((a,b,c))    // c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_THIRD_SEQ(seq) CORE_PP_THIRD seq</span>
 
-<span class="c1">// IS_SEQ()      == 0</span>
-<span class="c1">// IS_SEQ(a)     == 0</span>
-<span class="c1">// IS_SEQ(a,b)   == 0</span>
-<span class="c1">// IS_SEQ(())    == 1</span>
-<span class="c1">// IS_SEQ((a))   == 1</span>
-<span class="c1">// IS_SEQ((a,b)) == 1</span>
-<span class="c1">//</span>
+<span class="c1">// Helpers for IS_SEQ</span>
 <span class="cp">#define _CORE_PP_ZERO(...) 0</span>
 <span class="cp">#define _CORE_PP_IS_ZERO(...) CORE_PP_NOT(CORE_PP_BOOL(CORE_PP_HEAD(__VA_ARGS__)))</span>
+
+<span class="c1">/// Evalutes to 1 if the arguments are a sequence, otherwise 0.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_IS_SEQ()      // 0</span>
+<span class="c1">/// CORE_PP_IS_SEQ(a)     // 0</span>
+<span class="c1">/// CORE_PP_IS_SEQ(a,b)   // 0</span>
+<span class="c1">/// CORE_PP_IS_SEQ(())    // 1</span>
+<span class="c1">/// CORE_PP_IS_SEQ((a,b)) // 1</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_IS_SEQ(...) _CORE_PP_IS_ZERO(_CORE_PP_ZERO __VA_ARGS__)</span>
 
-<span class="c1">// HEAD_LIST_OR_SEQ(a)     == a</span>
-<span class="c1">// HEAD_LIST_OR_SEQ(a,b)   == a</span>
-<span class="c1">// HEAD_LIST_OR_SEQ((a))   == a</span>
-<span class="c1">// HEAD_LIST_OR_SEQ((a,b)) == a</span>
-<span class="c1">//</span>
+<span class="c1">/// Evaluates to the first element of the given list or sequence.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_HEAD_LIST_OR_SEQ(a)     == a</span>
+<span class="c1">/// CORE_PP_HEAD_LIST_OR_SEQ(a,b)   == a</span>
+<span class="c1">/// CORE_PP_HEAD_LIST_OR_SEQ((a))   == a</span>
+<span class="c1">/// CORE_PP_HEAD_LIST_OR_SEQ((a,b)) == a</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_HEAD_LIST_OR_SEQ(seq_or_value, ...)                        \</span>
 <span class="cp">    CORE_PP_IF_ELSE(CORE_PP_IS_SEQ(seq_or_value))                        \</span>
 <span class="cp">    (CORE_PP_HEAD_SEQ(seq_or_value), seq_or_value)</span>

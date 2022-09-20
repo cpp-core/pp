@@ -39,7 +39,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
+              <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/list.html">List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/sequence.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/utilities.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FILE REFERENCE</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../dir.html">include/</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../dir.html">core/</a><ul class="current">
@@ -97,15 +103,28 @@
              
   <section id="cat-h">
 <span id="include-core-pp-cat-h"></span><h1>cat.h<a class="headerlink" href="#cat-h" title="Permalink to this heading">¶</a></h1>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019 by Mark Melton</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright 2017, 2019, 2022 by Mark Melton</span>
 <span class="c1">//</span>
 
 <span class="cp">#pragma once</span>
 
-<span class="c1">// CAT(a, b) -&gt; ab</span>
-<span class="c1">// CATN(a, b, c) -&gt; ab, c</span>
-<span class="c1">//</span>
+<span class="c1">/// Evaluates to the concatenation of a and b.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_CAT(a, b)   // ab</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_CAT(a, b) a ## b</span>
+
+<span class="c1">/// Evaluates to the concatenation of a and b sequenced with the</span>
+<span class="c1">/// remaining arguments.</span>
+<span class="c1">///</span>
+<span class="c1">/// \verbatim embed:rst:leading-slashes</span>
+<span class="c1">/// ```{code-block} cpp</span>
+<span class="c1">/// CORE_PP_CATN(a, b, c)   // ab, c</span>
+<span class="c1">/// ```</span>
+<span class="c1">/// \endverbatim</span>
 <span class="cp">#define CORE_PP_CATN(a, ...) a ##  __VA_ARGS__</span>
 </pre></div>
 </div>
