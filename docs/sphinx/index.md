@@ -1,5 +1,5 @@
 
-# cxx-core-pp
+# C++ Preprocessor Library
 
 Primitives for ~~abusing~~ using the preprocessor in a structured fashion.
 
