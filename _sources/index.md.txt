@@ -79,6 +79,10 @@ libraries. The *cxx-core* libraries have two primary goals:
   provided a very minimal standard library. *cxx-core* aspires to
   provide support for a broad range of libraries that feel like part
   of the language.
+  
+# License
+
+This software is licenses under the BSD 3-clausse license. See the LICENSE file for details.
 
 # Appendix
 
