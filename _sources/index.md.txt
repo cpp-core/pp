@@ -82,7 +82,7 @@ libraries. The *cxx-core* libraries have two primary goals:
   
 # License
 
-This software is licenses under the BSD 3-clausse license. See the LICENSE file for details.
+This software is licensed under the BSD 3-clause license. See the LICENSE file for details.
 
 # Appendix
 
