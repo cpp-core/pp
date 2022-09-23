@@ -10,5 +10,5 @@ set(TESTS
   )
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/configure_tests.cmake)
-set(LIBS "cxx_core_pp;googletest::cxx-googletest;Threads::Threads")
+set(LIBS "pp;googletest::cxx-googletest;Threads::Threads")
 configure_tests("core" "${LIBS}" ${TESTS})

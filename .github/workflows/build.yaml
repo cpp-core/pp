@@ -16,16 +16,16 @@ jobs:
     - name: Requirements
       run: sudo apt-get install -y clang-11 libc++-11-dev libc++abi-11-dev
       
-    - name: SSH Agent
-      uses: webfactory/ssh-agent@v0.5.4
-      with:
-        ssh-private-key: ${{ secrets.CXX_CORE_PP }} ${{ secrets.CXX_DEPENDS }}
+    # - name: SSH Agent
+    #   uses: webfactory/ssh-agent@v0.5.4
+    #   with:
+    #     ssh-private-key: ${{ secrets.CXX_CORE_PP }} ${{ secrets.CXX_DEPENDS }}
         
-    - name: Checkout cxx-core-pp
+    - name: Checkout pp
       uses: actions/checkout@v2
       with:
-        repository: melton1968/cxx-core-pp
-        path: cxx-core-pp
+        repository: cpp-core/pp
+        path: pp
         
     - name: Checkout cxx-depends
       uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
       run: |
         export CC=clang-11
         export CXX=clang++-11
-        mkdir cxx-core-pp/build && pushd cxx-core-pp/build
+        mkdir pp/build && pushd pp/build
         cmake -DCMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opt ..
         make
         make check
