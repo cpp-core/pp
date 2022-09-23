@@ -39,8 +39,8 @@ jobs:
         export CC=clang-11
         export CXX=clang++-11
         mkdir cxx-depends/build && pushd cxx-depends/build
-        cmake -DCMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opt -DCORE_TEST=ON ..
-        make cxx_core_pp-depends
+        cmake -DCMAKE_INSTALL_PREFIX=${GITHUB_WORKSPACE}/opt -DCALL_TEST=ON ..
+        make pp-depends
         popd
 
     - name: Build and run the tests
