@@ -53,6 +53,7 @@ add_compile_options(-O)
 add_link_options(-stdlib=libc++)
 
 add_library(pp INTERFACE)
+add_library(pp::pp ALIAS pp)   # This allows FetchContent and FindPackage to work the same.
 
 target_include_directories(pp INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
