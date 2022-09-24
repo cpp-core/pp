@@ -34,3 +34,19 @@ function(cpp_core_find_package NAME)
   
 endfunction()
 
+function(cpp_core_find_package_local NAME URL)
+  message("-- cpp_core_find_package_local NAME: ${NAME}")
+  message("-- cpp_core_find_package_local URL: ${URL}")
+  
+  include(FetchContent)
+
+  FetchContent_Declare(
+    ${NAME}
+    GIT_REPOSITORY ${URL}
+    GIT_TAG main
+    GIT_SHALLOW TRUE
+    FIND_PACKAGE_ARGS
+    )
+  FetchContent_MakeAvailable(${NAME})
+  
+endfunction()
