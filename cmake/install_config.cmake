@@ -1,24 +1,29 @@
 cmake_minimum_required (VERSION 3.22 FATAL_ERROR)
 
 function(install_config TARGET)
-  include(GNUInstallDirs)
+  cmake_parse_arguments(
+    IC
+    "" # Flags
+    "" # Single Value Options
+    "DEPENDS" # Multi-Value Options
+    ${ARGN}
+    )
+  set(target_depends ${IC_DEPENDS})
   
-  if(${ARGC} GREATER_EQUAL 2)
-    set(name ${ARGV1})
-  else()
-    set(name ${TARGET})
-  endif()
+  include(GNUInstallDirs)
+  include(CMakePackageConfigHelpers)
+  
   set(flavor ${TARGET}-component)
 
   # This is where the cmake config* files will be installed.
-  set(config_install_dir ${CMAKE_INSTALL_LIBDIR}/cmake/${name})
+  set(config_install_dir ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})
 
   # The config version file.
-  set(config_version_name ${name}ConfigVersion.cmake)
+  set(config_version_name ${TARGET}ConfigVersion.cmake)
   set(config_version_build ${PROJECT_BINARY_DIR}/${config_version_name})
 
   # The config file.
-  set(config_name ${name}Config.cmake)
+  set(config_name ${TARGET}Config.cmake)
   set(config_install ${config_install_dir}/${config_name})
 
   # Building the config file.
@@ -26,11 +31,9 @@ function(install_config TARGET)
   set(config_build "${PROJECT_BINARY_DIR}/${config_name}")
 
   # The config target.
-  set(config_target_name "${name}Targets")
+  set(config_target_name "${TARGET}Targets")
   set(config_target_build ${PROJECT_BINARY_DIR}/${config_target_name}.cmake)
   set(config_target_install ${cmake_install_dir}/${config_target_name}.cmake)
-  
-  include(CMakePackageConfigHelpers)
   
   write_basic_package_version_file(
     ${config_version_name}
@@ -45,19 +48,28 @@ function(install_config TARGET)
     )
 
   install(
-    TARGETS ${TARGET}
+    TARGETS ${TARGET} ${target_depends}
     EXPORT ${config_target_name}
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE
+    LIBRARY
+    RUNTIME
+    PUBLIC_HEADER
+    FILE_SET HEADERS
     COMPONENT ${flavor}
     )
-
+  
   export(
     TARGETS ${TARGET}
-    NAMESPACE ${name}::
+    NAMESPACE ${TARGET}::
     FILE ${config_target_build}
     )
+
+  foreach(DT ${target_depends})
+    export(
+      TARGETS ${DT}
+      APPEND FILE ${config_target_build}
+      )
+  endforeach()
 
   install(
     FILES ${config_build} ${config_version_build}
@@ -68,7 +80,7 @@ function(install_config TARGET)
   install(
     EXPORT ${config_target_name}
     DESTINATION ${config_install_dir}
-    NAMESPACE ${name}::
+    NAMESPACE ${TARGET}::
     COMPONENT ${flavor}
     )
 

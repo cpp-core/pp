@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.22 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.24 FATAL_ERROR)
 project (pp VERSION 0.1 LANGUAGES C CXX)
 
 # Make including this file idempotent
@@ -53,12 +53,13 @@ add_compile_options(-O)
 add_link_options(-stdlib=libc++)
 
 add_library(pp INTERFACE)
-add_library(pp::pp ALIAS pp)   # This allows FetchContent and FindPackage to work the same.
+add_library(pp::pp ALIAS pp) # Allow interop between FetchContent and FindPackage.
 
-target_include_directories(pp INTERFACE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-
+# Define the header files for this library.
+#
+file(GLOB_RECURSE PUBLIC_INCLUDE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} include/*.h)
+target_sources(pp INTERFACE FILE_SET HEADERS BASE_DIRS include FILES ${PUBLIC_INCLUDE_FILES})
+  
 # Optionally configure the tests
 #
 if(PP_TEST)
@@ -76,11 +77,7 @@ if(PP_DOCS)
   add_subdirectory(docs)
 endif()
 
-# Install header files
-#
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/core/pp DESTINATION include/core)
-
-# Install config
+# Installation
 #
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(pp)
