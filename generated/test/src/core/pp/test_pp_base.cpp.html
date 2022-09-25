@@ -16,6 +16,7 @@
         <script src="../../../../../_static/underscore.js"></script>
         <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
@@ -94,199 +95,199 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Copyright (C) 2019 by Mark Melton</span>
 <span class="c1">//</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">Empty</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EMPTY</span><span class="p">()),</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">Empty</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EMPTY</span><span class="p">()),</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">COMMA</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_COMMA</span><span class="p">()),</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">COMMA</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_COMMA</span><span class="p">()),</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">PAREN</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">CORE_PP_LPAREN</span><span class="p">()</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="n">CORE_PP_RPAREN</span><span class="p">(),</span> <span class="mi">9</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">PAREN</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CORE_PP_LPAREN</span><span class="p">()</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">CORE_PP_RPAREN</span><span class="p">(),</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define CORE_PP_TEST_EVAL_INNER(x) x+1</span>
 <span class="cp">#define CORE_PP_TEST_EVAL_EMPTY</span>
 <span class="cp">#define CORE_PP_TEST_EVAL(x) CORE_PP_TEST_EVAL_INNER CORE_PP_TEST_EVAL_EMPTY (x)</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">EVAL</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;CORE_PP_TEST_EVAL_INNER (2)&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">))),</span> <span class="s">&quot;2+1&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">EVAL</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;CORE_PP_TEST_EVAL_INNER (2)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL</span><span class="p">(</span><span class="n">CORE_PP_TEST_EVAL</span><span class="p">(</span><span class="mi">2</span><span class="p">))),</span><span class="w"> </span><span class="s">&quot;2+1&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_EVAL_INNER</span>
 <span class="cp">#undef CORE_PP_TEST_EVAL_EMPTY</span>
 <span class="cp">#undef CORE_PP_TEST_EVAL</span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">DEFER</span><span class="p">)</span>
-<span class="p">{</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">DEFER</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">STRINGIZE</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">),</span> <span class="s">&quot;abc&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">,</span> <span class="n">def</span><span class="p">),</span> <span class="s">&quot;abc, def&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">STRINGIZE</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;abc&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">abc</span><span class="p">,</span><span class="w"> </span><span class="n">def</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;abc, def&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">CAT</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;12&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="s">&quot;12,3&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">CAT</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;12&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;12,3&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">UNPAREN</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s">&quot;1,2&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))),</span> <span class="s">&quot;1,2&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">UNPAREN</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;1,2&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))),</span><span class="w"> </span><span class="s">&quot;1,2&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">LIST</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="s">&quot;2,3&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">LIST</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;2,3&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">SEQ</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span> <span class="s">&quot;(2,3)&quot;</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_REST_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span><span class="w"> </span><span class="s">&quot;(2,3)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_THIRD_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(()),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">(()),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IS_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_LIST_OR_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">COUNT</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">COUNT</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))),</span> <span class="mi">3</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_COUNT_SEQ</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">BOOL</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">BOOL</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">IF</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">),</span> <span class="mi">7</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">)),</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">IF</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">)),</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">IF_ELSE</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">7</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="mi">8</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">IF_ELSE</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">HAS_ARGS</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span> <span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">HAS_ARGS</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define CORE_PP_TEST_ITEM(a) Tensor ## a ## n&lt;uint,a&gt;;</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
-              <span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor3n&lt;uint,3&gt;;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor3n&lt;uint,3&gt;;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_ITEM</span>
 
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_SEQ</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_SEQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)))),</span> <span class="s">&quot;1 2&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_SEQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD_SEQ</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)))),</span><span class="w"> </span><span class="s">&quot;1 2&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define CORE_PP_TEST_ITEM(a,b) Tensor ## b ## n&lt;a,b&gt;;</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAPN</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="mi">1</span><span class="p">))),</span>
-              <span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor1n&lt;int,1&gt;;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAPN</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">uint</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="mi">1</span><span class="p">))),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;Tensor1n&lt;uint,1&gt;; Tensor2n&lt;uint,2&gt;; Tensor1n&lt;int,1&gt;;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_ITEM</span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAPN_SEQ</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN_SEQ</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">;,</span> <span class="n">b</span><span class="p">;,</span> <span class="n">c</span><span class="p">;))),</span> <span class="s">&quot;int a; int b; int c;&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAPN_SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAPN_SEQ</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">;,</span><span class="w"> </span><span class="n">b</span><span class="p">;,</span><span class="w"> </span><span class="n">c</span><span class="p">;))),</span><span class="w"> </span><span class="s">&quot;int a; int b; int c;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define CORE_PP_TEST_ITEM(x) x x</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_INFIX</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span>
-              <span class="s">&quot;a a , b b , c c&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_INFIX</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span><span class="w"> </span><span class="n">CORE_PP_COMMA</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;a a , b b , c c&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_ITEM</span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_INFIX_SEQ</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX_SEQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span>
-                                                           <span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))),</span>
-              <span class="s">&quot;1 , 2 , 3&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_INFIX_SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_INFIX_SEQ</span><span class="p">(</span><span class="n">CORE_PP_SECOND_SEQ</span><span class="p">,</span><span class="w"> </span><span class="n">CORE_PP_COMMA</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                           </span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;1 , 2 , 3&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define CORE_PP_TEST_ITEM(name, value) name::value,</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_WITH</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span>
-              <span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_WITH</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_ITEM</span>
 
 <span class="cp">#define CORE_PP_TEST_ITEM(name, seq) name::CORE_PP_SECOND_SEQ(seq),</span>
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">MAP_WITH_SEQ</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH_SEQ</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span>
-                                                          <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="p">)))),</span>
-              <span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_WITH_SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_MAP_WITH_SEQ</span><span class="p">(</span><span class="n">CORE_PP_TEST_ITEM</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                          </span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)))),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;Foo::a, Foo::b, Foo::c,&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 <span class="cp">#undef CORE_PP_TEST_ITEM</span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span> <span class="n">CARTESIAN_PRODUCT</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span>
-              <span class="s">&quot;( (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3), )&quot;</span><span class="p">);</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">PP</span><span class="p">,</span><span class="w"> </span><span class="n">CARTESIAN_PRODUCT</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">CORE_PP_STRINGIZE</span><span class="p">(</span><span class="n">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))),</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;( (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3), )&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-    <span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nf">RUN_ALL_TESTS</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">RUN_ALL_TESTS</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>

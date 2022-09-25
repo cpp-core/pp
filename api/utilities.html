@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -113,10 +114,10 @@
 <dt class="sig sig-object cpp" id="c.CORE_PP_HAS_ARGS">
 <span class="target" id="args_8h_1aa558a0d10170a14a4b8127549e3d2cd2"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_HAS_ARGS</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_HAS_ARGS" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to 1 if the macro is passed arguments, 0 otherwise.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">()</span>      <span class="c1">// 0</span>
-<span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="c1">// 1</span>
-<span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>   <span class="c1">// 1</span>
-<span class="n">CORE_PP_HAS_ARGS</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="c1">// 1</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HAS_ARGS</span><span class="p">()</span><span class="w">      </span><span class="c1">// 0</span>
+<span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">     </span><span class="c1">// 1</span>
+<span class="n">CORE_PP_HAS_ARGS</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">CORE_PP_HAS_ARGS</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span><span class="w"> </span><span class="c1">// 1</span>
 </pre></div>
 </div>
 </p>
@@ -133,9 +134,9 @@
 <span class="target" id="unparen_8h_1a6943975a6505485f9b2bb1f6873d8afa"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_UNPAREN</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_UNPAREN" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to its arguments removing a pair of enclosing parentheses if possible.</p>
 <p>Invoking this macro on a sequence produces a list.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_UNPAREN</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="c1">// a</span>
-<span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="n">a</span><span class="p">))</span>   <span class="c1">// a</span>
-<span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="c1">// a,b</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_UNPAREN</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">     </span><span class="c1">// a</span>
+<span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="n">a</span><span class="p">))</span><span class="w">   </span><span class="c1">// a</span>
+<span class="n">CORE_PP_UNPAREN</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span><span class="w"> </span><span class="c1">// a,b</span>
 </pre></div>
 </div>
 </p>
@@ -150,8 +151,8 @@
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define A(x) x+1</span>
 <span class="cp">#define EMPTY</span>
 <span class="cp">#define NEEDS_TWO_PASSES(x) A EMPTY (x)</span>
-<span class="n">NEEDS_TWO_PASSES</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                <span class="c1">// A (2)</span>
-<span class="n">CORE_PP_EVAL</span><span class="p">(</span><span class="n">NEEDS_TWO_PASSES</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">// 2 +1</span>
+<span class="n">NEEDS_TWO_PASSES</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                </span><span class="c1">// A (2)</span>
+<span class="n">CORE_PP_EVAL</span><span class="p">(</span><span class="n">NEEDS_TWO_PASSES</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="w">  </span><span class="c1">// 2 +1</span>
 </pre></div>
 </div>
 </p>

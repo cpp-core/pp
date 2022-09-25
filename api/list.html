@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -89,7 +90,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_HEAD">
 <span class="target" id="list_8h_1a9facc99ccbd7a137e82615150a0f1a20"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_HEAD</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_HEAD" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the first argument.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// a</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_HEAD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">   </span><span class="c1">// a</span>
 </pre></div>
 </div>
 </p>
@@ -100,7 +101,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_REST">
 <span class="target" id="list_8h_1a927274f24e99d63d56ab53184c1aaf17"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_REST</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_REST" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the remaining arguments.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// b, c</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_REST</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">   </span><span class="c1">// b, c</span>
 </pre></div>
 </div>
 </p>
@@ -111,7 +112,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_SECOND">
 <span class="target" id="list_8h_1aa4b723ff75cde718b25151645580ba6f"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_SECOND</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_SECOND" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the second argument.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// b</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_SECOND</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">   </span><span class="c1">// b</span>
 </pre></div>
 </div>
 </p>
@@ -122,7 +123,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_THIRD">
 <span class="target" id="list_8h_1a0c37b2eaa213f45e3d70d0aea43704bd"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_THIRD</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span>, <span class="n"><span class="pre">c</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_THIRD" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the third argument.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// c</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_THIRD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">   </span><span class="c1">// c</span>
 </pre></div>
 </div>
 </p>
@@ -133,7 +134,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_CAT">
 <span class="target" id="cat_8h_1aeab783188993cb0308188508fa1ce481"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_CAT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="n"><span class="pre">b</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_CAT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the concatenation of its two arguments.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>   <span class="c1">// ab</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CAT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">   </span><span class="c1">// ab</span>
 </pre></div>
 </div>
 </p>
@@ -144,7 +145,7 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_CATN">
 <span class="target" id="cat_8h_1a4b1f3410bf22656b17dc25304955f4b7"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_CATN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">a</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_CATN" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the concatenation of its first row arguments sequenced with the remaining arguments.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>   <span class="c1">// ab, c</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_CATN</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">   </span><span class="c1">// ab, c</span>
 </pre></div>
 </div>
 </p>
@@ -155,10 +156,10 @@ parentheses (which would make it a sequence).</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_COUNT">
 <span class="target" id="count_8h_1ab7ce78f6f63473072077d250444aaaf3"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_COUNT</span></span></span><span class="sig-paren">(</span><span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_COUNT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the number of elements in the given list.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_COUNT</span><span class="p">()</span>          <span class="c1">// 0</span>
-<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>         <span class="c1">// 1</span>
-<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>       <span class="c1">// 2</span>
-<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>     <span class="c1">// 3</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_COUNT</span><span class="p">()</span><span class="w">          </span><span class="c1">// 0</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w">         </span><span class="c1">// 1</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="w">       </span><span class="c1">// 2</span>
+<span class="n">CORE_PP_COUNT</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span><span class="w">     </span><span class="c1">// 3</span>
 </pre></div>
 </div>
 </p>

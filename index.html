@@ -16,6 +16,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -91,17 +92,17 @@ last resort.</p>
 evils, can we all agree to use it in a structured fashion. For
 example, to generate class template instatiations for several integral
 types:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#define GEN_MYCLASS(N,T) template&lt;&gt; class N&lt;T&gt;;</span>
 <span class="cp">#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_EVAL_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)</span>
 <span class="cp">#define TYPE_SEQ (int8, int16, int32, int64)</span>
 
-<span class="n">GEN_MYCLASS_SEQ</span><span class="p">(</span><span class="n">TYPE_SEQ</span><span class="p">)</span>
+<span class="n">GEN_MYCLASS_SEQ</span><span class="p">(</span><span class="n">TYPE_SEQ</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Produces the following:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span> <span class="k">class</span> <span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">template</span><span class="o">&lt;&gt;</span> <span class="k">class</span> <span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">template</span><span class="o">&lt;&gt;</span> <span class="k">class</span> <span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Yes, I know, if only we could get the proprocessor to emit some

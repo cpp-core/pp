@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -83,9 +84,9 @@
 <dt class="sig sig-object cpp" id="c.CORE_PP_BOOL">
 <span class="target" id="bool_8h_1a9660ee46e6c32d7250f9d64fe186055e"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_BOOL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_BOOL" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to 1 if the given argument is not false, 0 otherwise.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">// 0</span>
-<span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">// 1</span>
-<span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="c1">// 1</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="c1">// 0</span>
+<span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">CORE_PP_BOOL</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
 </pre></div>
 </div>
 </p>
@@ -96,9 +97,9 @@
 <dt class="sig sig-object cpp" id="c.CORE_PP_NOT">
 <span class="target" id="bool_8h_1ac9b07083c05a568e12fedf41a9988205"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_NOT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">x</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_NOT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to 0 if the given arguemnt is not false, 1 otherwise.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">// 1</span>
-<span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">// 0</span>
-<span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="c1">// 0</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="c1">// 1</span>
+<span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c1">// 0</span>
+<span class="n">CORE_PP_NOT</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span><span class="w"> </span><span class="c1">// 0</span>
 </pre></div>
 </div>
 </p>
@@ -109,8 +110,8 @@
 <dt class="sig sig-object cpp" id="c.CORE_PP_IF">
 <span class="target" id="ifelse_8h_1ad2f1d0eee49d14158c17388fe9a8f247"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_IF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_IF" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to either a macro that returns its arguments (if the given condition is true) or a macro that returns nothing (if the given condition is false). When invoked with with two pairs of parentheses, this acts much like a traditional if statement: <code class="docutils literal notranslate"><span class="pre">CODE_PP_IF(condition)(then-clause)</span></code></p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">123</span><span class="p">)(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// true</span>
-<span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="nb">true</span><span class="p">)</span>   <span class="c1">// </span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">123</span><span class="p">)(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
+<span class="n">CORE_PP_IF</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="nb">true</span><span class="p">)</span><span class="w">   </span><span class="c1">// </span>
 </pre></div>
 </div>
 </p>
@@ -121,8 +122,8 @@
 <dt class="sig sig-object cpp" id="c.CORE_PP_IF_ELSE">
 <span class="target" id="ifelse_8h_1a5504ab548d0f891a087f4c5baef3e6c8"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_IF_ELSE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">c</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_IF_ELSE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to either a macro that returns its first argument (if the given condition is true) or a macro that return its second argument (if the given condition is false). When invoked with two pairs of parentheses, this works much like a traditional if-then-else statement: <code class="docutils literal notranslate"><span class="pre">CODE_PP_IF_ELSE(condition)(then-clause,else-clause)</span></code>.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">123</span><span class="p">)(</span><span class="nb">true</span><span class="p">,</span><span class="nb">false</span><span class="p">)</span> <span class="c1">// true</span>
-<span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="nb">true</span><span class="p">,</span><span class="nb">false</span><span class="p">)</span>   <span class="c1">// false</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">123</span><span class="p">)(</span><span class="nb">true</span><span class="p">,</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="c1">// true</span>
+<span class="n">CORE_PP_IF_ELSE</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="nb">true</span><span class="p">,</span><span class="nb">false</span><span class="p">)</span><span class="w">   </span><span class="c1">// false</span>
 </pre></div>
 </div>
 </p>

@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -95,7 +96,7 @@ on sequences as opposed to lists.</p>
 <span class="target" id="map_8h_1ac0b022bb6356e3f82858d38d618caec0"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">first</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the macro m applied to each of the remaining arguments.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DOUBLER(x) x x</span>
-<span class="n">CORE_PP_EVAL_MAP</span><span class="p">(</span><span class="n">DOUBLER</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// 1 1 2 2 3 3</span>
+<span class="n">CORE_PP_EVAL_MAP</span><span class="p">(</span><span class="n">DOUBLER</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1 1 2 2 3 3</span>
 </pre></div>
 </div>
 </p>
@@ -106,7 +107,7 @@ on sequences as opposed to lists.</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_EVAL_MAP_SEQ">
 <span class="target" id="map_8h_1a22b49c9a91d581981bd66f3ae2bfb6a2"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP_SEQ" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the macro m applied to each element of the given sequence.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAP_SEQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">// 1 2</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAP_SEQ</span><span class="p">(</span><span class="n">CORE_PP_HEAD</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">// 1 2</span>
 </pre></div>
 </div>
 </p>
@@ -117,7 +118,7 @@ on sequences as opposed to lists.</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_EVAL_MAPN">
 <span class="target" id="map_8h_1a6ff4df47f914f6480a7bcc946acb360d"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAPN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">first</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAPN" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the macro m prepended to each argument in turn.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAPN</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="c1">// int a int b int c</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAPN</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">// int a int b int c</span>
 </pre></div>
 </div>
 </p>
@@ -128,7 +129,7 @@ on sequences as opposed to lists.</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_EVAL_MAPN_SEQ">
 <span class="target" id="map_8h_1abd3fb042015b8b945a18ea55538b56fc"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAPN_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAPN_SEQ" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the first element of the given sequence prepended to each remianing element of the sequence in turn.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAPN_SEQ</span><span class="p">((</span><span class="kt">int</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="c1">// int a int b int c</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_MAPN_SEQ</span><span class="p">((</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="c1">// int a int b int c</span>
 </pre></div>
 </div>
 </p>
@@ -140,7 +141,7 @@ on sequences as opposed to lists.</p>
 <span class="target" id="map_8h_1a650bc1c027edef4a9c05538b1a6a8af1"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP_INFIX</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">infix</span></span>, <span class="n"><span class="pre">first</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP_INFIX" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the given macro m applied to each of the arguments starting with first interspersed with the macro infix.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DOUBLER(x) x x</span>
-<span class="n">CORE_PP_MAP_INFIX</span><span class="p">(</span><span class="n">DOUBLER</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="c1">// a a , b b , c c</span>
+<span class="n">CORE_PP_MAP_INFIX</span><span class="p">(</span><span class="n">DOUBLER</span><span class="p">,</span><span class="w"> </span><span class="n">CORE_PP_COMMA</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">// a a , b b , c c</span>
 </pre></div>
 </div>
 </p>
@@ -151,7 +152,7 @@ on sequences as opposed to lists.</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_EVAL_MAP_INFIX_SEQ">
 <span class="target" id="map_8h_1a78b766083b6ffcb84eb8f9b14ccfb5ee"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP_INFIX_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">infix</span></span>, <span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP_INFIX_SEQ" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the given macro m applied to each of the arguments starting with first interspersed with the macro infix.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_MAP_INFIX_SEQ</span><span class="p">(</span><span class="n">SECOND_SEQ</span><span class="p">,</span> <span class="n">CORE_PP_COMMA</span><span class="p">,</span> <span class="p">((</span><span class="n">a</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">c</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">// 1 , 2 , 3</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_MAP_INFIX_SEQ</span><span class="p">(</span><span class="n">SECOND_SEQ</span><span class="p">,</span><span class="w"> </span><span class="n">CORE_PP_COMMA</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">// 1 , 2 , 3</span>
 </pre></div>
 </div>
 </p>
@@ -163,7 +164,7 @@ on sequences as opposed to lists.</p>
 <span class="target" id="map_8h_1a49ac6dc7a6a2b463920b77d4547069d2"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP_WITH</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">first</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP_WITH" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the given macro invoked with the given data paired with each subsequent argument in turn.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define QUALIFY(name, value) name::value</span>
-<span class="n">CORE_PP_EVAL_MAP_WITH</span><span class="p">(</span><span class="n">QUALITY</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="c1">// Foo::a , Foo::b , Foo::c</span>
+<span class="n">CORE_PP_EVAL_MAP_WITH</span><span class="p">(</span><span class="n">QUALITY</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">// Foo::a , Foo::b , Foo::c</span>
 </pre></div>
 </div>
 </p>
@@ -175,7 +176,7 @@ on sequences as opposed to lists.</p>
 <span class="target" id="map_8h_1a71a8b68cdde2a883a1cbcd656220f672"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_MAP_WITH_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">m</span></span>, <span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">seq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_MAP_WITH_SEQ" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to the given macro invoked with the given data paired with each element of the given sequence in turn.</p>
 <p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define QUALIFY(name, seq) name::SECOND_SEQ(seq),</span>
-<span class="n">COre_PP_EVAL_MAP_WITH_SEQ</span><span class="p">(</span><span class="n">QUALIFY</span><span class="p">,</span> <span class="n">Foo</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="p">)))</span> <span class="c1">// Foo::a, Foo::b, Foo::c</span>
+<span class="n">COre_PP_EVAL_MAP_WITH_SEQ</span><span class="p">(</span><span class="n">QUALIFY</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span><span class="p">,</span><span class="w"> </span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)))</span><span class="w"> </span><span class="c1">// Foo::a, Foo::b, Foo::c</span>
 </pre></div>
 </div>
 </p>
@@ -189,7 +190,7 @@ on sequences as opposed to lists.</p>
 <dt class="sig sig-object cpp" id="c.CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ">
 <span class="target" id="product_8h_1a284156f088fd4f3cedba07438b5b3f17"></span><span class="sig-name descname"><span class="n"><span class="pre">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">aseq</span></span>, <span class="n"><span class="pre">bseq</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Expands to a sequence of sequences representing the cartesian product of the two given sequences.</p>
-<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1">// ((a,1),(a,2),(b,1),(b,2),(c,1),(c,2))</span>
+<p><p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CORE_PP_EVAL_CARTESIAN_PRODUCT_SEQ</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="c1">// ((a,1),(a,2),(b,1),(b,2),(c,1),(c,2))</span>
 </pre></div>
 </div>
 </p>
