@@ -3,7 +3,7 @@ project (pp VERSION 0.1 LANGUAGES C CXX)
 
 # Make including this file idempotent
 #
-if(TARGET pp or TARGET pp::pp)
+if(TARGET pp OR TARGET pp::pp)
   return()
 endif()
 
