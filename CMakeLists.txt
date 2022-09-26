@@ -41,7 +41,7 @@ message("-- pp: PP_TEST ${PP_TEST}")
 message("-- pp: PP_DOCS ${PP_DOCS}")
 message("-- pp: CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
 
-# Compilation
+# Setup compilation
 #
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -52,6 +52,8 @@ add_compile_options(-stdlib=libc++)
 add_compile_options(-O)
 add_link_options(-stdlib=libc++)
 
+# Build the library
+#
 add_library(pp INTERFACE)
 add_library(pp::pp ALIAS pp) # Allow interop between FetchContent and FindPackage.
 
