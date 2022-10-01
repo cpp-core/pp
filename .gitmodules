@@ -1,0 +1,6 @@
+[submodule "extern/cmake"]
+	path = extern/cmake
+	url = ../cmake
+[submodule "extern/googletest"]
+	path = extern/googletest
+	url = ../googletest

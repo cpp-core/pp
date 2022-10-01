@@ -7,39 +7,41 @@ if(TARGET pp OR TARGET pp::pp)
   return()
 endif()
 
-# Configuration variables.
-#
-# Build the tests and set directories if this is the master project
-#
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  set(PP_TEST ON CACHE BOOL "Generate the tests.")
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-  set(CMAKE_DOCS_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/docs)
-  
-  # Have cmake output the compilation commands and create a link to it
-  # from the project root directory so the language server can find
-  # it.
-  #
-  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
-    ${CMAKE_BINARY_DIR}/compile_commands.json
-    ${CMAKE_SOURCE_DIR}/compile_commands.json)
-endif()
-
 # Options for generating tests and documentation.
 #
 option(PP_TEST "Generate the tests." OFF)
 option(PP_DOCS "Generate the docs." OFF)
 
+# If this is the current project.
+#
+if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
+  # Include the cmake helpers
+  #
+  include(extern/cmake/utils/all.cmake)
+  include(extern/cmake/recipes/all.cmake)
+
+  # Generate the tests
+  #
+  set(PP_TEST ON CACHE BOOL "" FORCE)
+
+  # compile_commands.json
+  #
+  symlink_compile_commands()
+
+  # Convenience targets for git operations
+  make_submodule_pull_target()
+endif()
+
 # Output configuration
 #
 message("-- pp: Configuration: ${CMAKE_CURRENT_SOURCE_DIR}")
 message("-- pp: Included from: ${CMAKE_SOURCE_DIR}")
+message("-- pp: Install prefix: ${CMAKE_INSTALL_PREFIX}")
+message("-- pp: Project source dir: ${PROJECT_SOURCE_DIR}")
+message("-- pp: Project binary dir: ${PROJECT_BINARY_DIR}")
+message("-- pp: Cmake binary dir: ${CMAKE_BINARY_DIR}")
 message("-- pp: PP_TEST ${PP_TEST}")
 message("-- pp: PP_DOCS ${PP_DOCS}")
-message("-- pp: CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
 
 # Setup compilation
 #
@@ -65,11 +67,7 @@ target_sources(pp INTERFACE FILE_SET HEADERS BASE_DIRS include FILES ${PUBLIC_IN
 # Optionally configure the tests
 #
 if(PP_TEST)
-  enable_testing()
-  if (NOT TARGET check)
-    add_custom_target(check ${CMAKE_CTEST_COMMAND})
-    add_custom_target(check_detail ${CMAKE_CTEST_COMMAND} -V)
-  endif()
+  add_gtest()
   add_subdirectory(test)
 endif()
 
@@ -81,5 +79,4 @@ endif()
 
 # Installation
 #
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/install_config.cmake)
 install_config(pp)
