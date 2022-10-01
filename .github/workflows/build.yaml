@@ -24,7 +24,7 @@ jobs:
       with:
         repository: cpp-core/pp
         path: pp
-	submodules: recursive
+        submodules: recursive
         
     - name: Build and run the tests
       run: |
