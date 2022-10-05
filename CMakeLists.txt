@@ -32,6 +32,10 @@ if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
   make_submodule_pull_target()
 endif()
 
+# Put executables in the top-level binary directory
+#
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # Output configuration
 #
 message("-- pp: Configuration: ${CMAKE_CURRENT_SOURCE_DIR}")
