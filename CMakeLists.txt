@@ -7,22 +7,26 @@ if(TARGET pp OR TARGET pp::pp)
   return()
 endif()
 
-# Options for generating tests and documentation.
+# New behavior allows overriding option with normal variable.
 #
-option(PP_TEST "Generate the tests." OFF)
-option(PP_DOCS "Generate the docs." OFF)
+cmake_policy(VERSION 3.24)
 
 # If this is the current project.
 #
 if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
+  set(CPP_CORE_DIR "${CMAKE_CURRENT_LIST_DIR}/.." CACHE STRING "Root directory for components")
+  set(CPP_CORE_SOURCE_COMPONENT_DIR ${CPP_CORE_DIR})
+  set(CPP_CORE_BINARY_COMPONENT_DIR ${CMAKE_BINARY_DIR})
+  
   # Include the cmake helpers
   #
-  include(extern/cmake/utils/all.cmake)
-  include(extern/cmake/recipes/all.cmake)
+  include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/utils/all.cmake)
+  include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/recipes/all.cmake)
 
-  # Generate the tests
+  # Generate the tests and documentation by default
   #
-  set(PP_TEST ON CACHE BOOL "" FORCE)
+  option(PP_TEST "Generate the tests." ON)
+  option(PP_DOCS "Generate the docs." OFF)
 
   # compile_commands.json
   #
@@ -30,6 +34,10 @@ if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
 
   # Convenience targets for git operations
   make_submodule_pull_target()
+  
+else()
+  option(PP_TEST "Generate the tests." OFF)
+  option(PP_DOCS "Generate the docs." OFF)
 endif()
 
 # Put executables in the top-level binary directory
