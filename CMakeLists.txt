@@ -14,14 +14,27 @@ cmake_policy(VERSION 3.24)
 # If this is the current project.
 #
 if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
-  set(CPP_CORE_DIR "${CMAKE_CURRENT_LIST_DIR}/.." CACHE STRING "Root directory for components")
-  set(CPP_CORE_SOURCE_COMPONENT_DIR ${CPP_CORE_DIR})
-  set(CPP_CORE_BINARY_COMPONENT_DIR ${CMAKE_BINARY_DIR})
+  if(CPP_CORE_DEV)
+    set(CPP_CORE_DIR "${CMAKE_CURRENT_LIST_DIR}/.." CACHE STRING "Root directory for components")
+    set(CPP_CORE_SOURCE_COMPONENT_DIR ${CPP_CORE_DIR})
+    set(CPP_CORE_BINARY_COMPONENT_DIR ${CMAKE_BINARY_DIR})
   
-  # Include the cmake helpers
-  #
-  include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/utils/all.cmake)
-  include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/recipes/all.cmake)
+    # Include the cmake helpers
+    #
+    include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/utils/all.cmake)
+    include(${CPP_CORE_SOURCE_COMPONENT_DIR}/cmake/recipes/all.cmake)
+  else()
+    include(FetchContent)
+    FetchContent_Declare(
+      cmake
+      GIT_REPOSITORY https://github.com/cpp-core/cmake
+      GIT_TAG main
+      )
+    FetchContent_MakeAvailable(cmake)
+
+    include(${CMAKE_BINARY_DIR}/_deps/cmake-src/utils/all.cmake)
+    include(${CMAKE_BINARY_DIR}/_deps/cmake-src/standalone/all.cmake)
+  endif()
 
   # Generate the tests and documentation by default
   #
