@@ -17,7 +17,7 @@ if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
   # Laod the cmake recipes and utilities.
   #
   include(${CMAKE_CURRENT_LIST_DIR}/cmake/load_cmake_helpers.cmake)
-
+  
   # Generate the tests and documentation by default
   #
   option(PP_TEST "Generate the tests." ON)
