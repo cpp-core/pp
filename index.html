@@ -1,36 +1,78 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>C++ Preprocessor Library &mdash; cxx-core-pp  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/js/theme.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Conditionals" href="api/conditional.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
+
+          
             <a href="#" class="icon icon-home"> cxx-core-pp
+          
+
+          
+            
             <img src="_static/cxx-core.png" class="logo" alt="Logo"/>
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -38,7 +80,18 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
               <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/conditional.html">Conditionals</a></li>
@@ -53,30 +106,71 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/test/dir.html">test/</a></li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">cxx-core-pp</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
+    
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
       <li>C++ Preprocessor Library</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+          
             <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
+            
   <section id="c-preprocessor-library">
 <h1>C++ Preprocessor Library<a class="headerlink" href="#c-preprocessor-library" title="Permalink to this heading">¶</a></h1>
 <p>Primitives for <s>abusing</s> using the preprocessor in a structured fashion.</p>
@@ -92,17 +186,17 @@ last resort.</p>
 evils, can we all agree to use it in a structured fashion. For
 example, to generate class template instatiations for several integral
 types:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;core/pp/pp.h&quot;</span><span class="cp"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;core/pp/pp.h&quot;</span>
 
 <span class="cp">#define GEN_MYCLASS(N,T) template&lt;&gt; class N&lt;T&gt;;</span>
 <span class="cp">#define GEN_MYCLASS_SEQ(SEQ) CORE_PP_EVAL_MAP_WITH_SEQ(MYCLASS,MyClass,SEQ)</span>
 <span class="cp">#define TYPE_SEQ (int8, int16, int32, int64)</span>
 
-<span class="n">GEN_MYCLASS_SEQ</span><span class="p">(</span><span class="n">TYPE_SEQ</span><span class="p">)</span><span class="w"></span>
+<span class="n">GEN_MYCLASS_SEQ</span><span class="p">(</span><span class="n">TYPE_SEQ</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Produces the following:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Yes, I know, if only we could get the proprocessor to emit some
@@ -110,31 +204,18 @@ newlines. Like I said, don’t go there unless you must.</p>
 </section>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
-<section id="standalone">
-<h2>Standalone<a class="headerlink" href="#standalone" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:melton1968/cxx-core-pp
-mkdir cxx-core-pp/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> cxx-core-pp/build
-<span class="nv">CC</span><span class="o">=</span>clang-mp-11 <span class="nv">CXX</span><span class="o">=</span>clang++-mp-11 cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/opt ..
-make check    <span class="c1"># Run the tests</span>
-make install  <span class="c1"># Do the install</span>
-</pre></div>
-</div>
-</section>
-<section id="cxx-depends">
-<h2>cxx-depends<a class="headerlink" href="#cxx-depends" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:melton1968/cxx-depends
-mkdir cxx-depends/build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> cxx-depends/build
-<span class="nv">CC</span><span class="o">=</span>clang-mp-11 <span class="nv">CXX</span><span class="o">=</span>clang++-mp-11 cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/opt -DCORE_TESTS<span class="o">=</span>ON ..
-make cxx_core_pp-check  <span class="c1"># Run the tests</span>
-make cxx_core_pp        <span class="c1"># Do the install</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cpp-core/pp
+mkdir<span class="w"> </span>pp/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pp/build
+<span class="nv">CC</span><span class="o">=</span>clang-mp-14<span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>clang++-mp-14<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$HOME</span>/opt<span class="w"> </span>..
+make<span class="w"> </span>-j4<span class="w"> </span>check<span class="w"> </span><span class="c1"># Run tests</span>
+make<span class="w"> </span>install<span class="w">   </span><span class="c1"># Do the install</span>
 </pre></div>
 </div>
 <p>To build the documentation (requires doxygen and sphinx-build to be installed)::</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="o">=</span>clang-11 <span class="nv">CXX</span><span class="o">=</span>clang++11 cmake -DCORE_DOCS ..
-make cxx_core_pp_docs <span class="c1"># root of html tree is docs/html/index.html</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CC</span><span class="o">=</span>clang-11<span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>clang++11<span class="w"> </span>cmake<span class="w"> </span>-DCORE_DOCS<span class="w"> </span>..
+make<span class="w"> </span>cxx_core_pp_docs<span class="w"> </span><span class="c1"># root of html tree is docs/html/index.html</span>
 </pre></div>
 </div>
-</section>
 </section>
 <section id="background">
 <h1>Background<a class="headerlink" href="#background" title="Permalink to this heading">¶</a></h1>
@@ -218,32 +299,49 @@ of the language.</p></li>
 
 
            </div>
+           
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="api/conditional.html" class="btn btn-neutral float-right" title="Conditionals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019, 2022, Mark Melton.</p>
-  </div>
+    <p>
+        &#169; Copyright 2019, 2022, Mark Melton.
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
