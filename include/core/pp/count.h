@@ -1,4 +1,4 @@
-// Copyright 2017, 2019, 2022 by Mark Melton
+// Copyright 2017, 2019, 2022, 2023 by Mark Melton
 //
 
 #pragma once
@@ -18,7 +18,7 @@
 /// CORE_PP_COUNT(a,b,c)     // 3
 /// ```
 /// \endverbatim
-#define CORE_PP_COUNT(...) _CORE_PP_ARGN(ignored, ##__VA_ARGS__,		\
+#define CORE_PP_COUNT(...) _CORE_PP_ARGN(ignored __VA_OPT__(,) ##__VA_ARGS__, \
 					 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, \
 					 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, \
 					 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
