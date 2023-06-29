@@ -29,15 +29,24 @@ if(PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME)
 
   # Convenience targets for git operations
   make_submodule_pull_target()
+
+  # Setup compilation
+  #
+  set(CMAKE_CXX_STANDARD 20)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+
+  add_compile_options(-Wall)
+  add_compile_options(-O)
+  
+  # Put executables in the top-level binary directory
+  #
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
   
 else()
   option(PP_TEST "Generate the tests." OFF)
   option(PP_DOCS "Generate the docs." OFF)
 endif()
-
-# Put executables in the top-level binary directory
-#
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Output configuration
 #
@@ -49,15 +58,6 @@ message("-- pp: Project binary dir: ${PROJECT_BINARY_DIR}")
 message("-- pp: Cmake binary dir: ${CMAKE_BINARY_DIR}")
 message("-- pp: test: ${PP_TEST}")
 message("-- pp: docs: ${PP_DOCS}")
-
-# Setup compilation
-#
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-add_compile_options(-Wall)
-add_compile_options(-O)
 
 # Build the library
 #
