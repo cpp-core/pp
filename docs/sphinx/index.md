@@ -5,16 +5,14 @@ Primitives for ~~abusing~~ using the preprocessor in a structured fashion.
 
 # Brief Tour
 
-If you find youself using the preprocessor to generate code, just
-don't. Take a walk in the woods and clear you head. Re-evaluate the
-problem and come up with a better option. Maybe use a code-generation
-tool designed for the task at hand. Using the preprocessor should be a
-last resort.
+Using the `C` preprocessor to generate code, while often derided, is
+sometimes useful. The `pp` library is light-weight, header-only macro
+library providing primitives such as lists, sequences, conditionals
+and map operations, designed to facilitate using the `C` preprocessor
+in a well-structured, functional manner.
 
-But, for those times when using the preprocessor is the lessor of the
-evils, can we all agree to use it in a structured fashion. For
-example, to generate class template instatiations for several integral
-types:
+The following snippet demonstrates generating class template
+instatiations for several types.
 
 ```c++
 #include "core/pp/pp.h"
@@ -40,7 +38,7 @@ newlines. Like I said, don't go there unless you must.
 ```bash
 git clone https://github.com/cpp-core/pp
 mkdir pp/build && cd pp/build
-CC=clang-mp-14 CXX=clang++-mp-14 cmake -DCMAKE_INSTALL_PREFIX=$HOME/opt ..
+CC=clang-mp-16 CXX=clang++-mp-16 cmake -DCMAKE_INSTALL_PREFIX=$HOME/opt ..
 make -j4 check # Run tests
 make install   # Do the install
 ```

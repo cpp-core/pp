@@ -21,7 +21,8 @@ providing primitives such as lists, sequences, conditionals and map
 operations, designed to facilitate using the `C` processor in a
 well-structured, functional manner.
 
-The following snippet demonstrates generating class template instatiations for several types.
+The following snippet demonstrates generating class template
+instatiations for several types.
 
 ```c++
 #include "core/pp/pp.h"
@@ -41,6 +42,16 @@ template<> class MyClass<int>; template<> class MyClass<long int>; template<> cl
 Yes, if only we could get the preprocessor to emit some newlines.
 
 ## Installation
+
+### Local Install
+
+```
+git clone https://github.com/cpp-core/pp
+mkdir pp/build && cd pp/build
+CC=clang-mp-16 CXX=clang++-mp-16 cmake -DCMAKE_INSTALL_PREFIX=~/opt
+make -j4 check
+make install
+```
 
 ## Tutorial
 
