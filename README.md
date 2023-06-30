@@ -1,11 +1,11 @@
 [![Build and Unit Test](https://github.com/cpp-core/pp/actions/workflows/build.yaml/badge.svg)](https://github.com/cpp-core/pp/actions/workflows/build.yaml)
 [![Docs](https://github.com/cpp-core/pp/actions/workflows/docs.yaml/badge.svg)](https://github.com/cpp-core/pp/actions/workflows/docs.yaml)
 
-# Primitives for using the preprocessor in a structured fashion.
+# `C` Preprocessor Primitives for Structured Programming
 * [Motivation](#motivation)
 * [Documentation](https://cpp-core.github.io/pp/)
 
-## Mativation
+## Motivation
 
 Using the `C` preprocessor to generate code, while often derided, is
 sometimes useful. From generating self-serializing `enum`s to
