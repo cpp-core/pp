@@ -43,14 +43,57 @@ Yes, if only we could get the preprocessor to emit some newlines.
 
 ## Installation
 
-### Local Install
+### Local Test and Install
 
 ```
 git clone https://github.com/cpp-core/pp
 mkdir pp/build && cd pp/build
-CC=clang-mp-16 CXX=clang++-mp-16 cmake -DCMAKE_INSTALL_PREFIX=~/opt
+CC=clang-mp-16 CXX=clang++-mp-16 cmake .. -DCMAKE_INSTALL_PREFIX=~/opt
 make -j4 check
 make install
+```
+
+### Local Install Only
+
+```
+git clone https://github.com/cpp-core/pp
+mkdir pp/build && cd pp/build
+CC=clang-mp-16 CXX=clang++-mp-16 cmake .. -DCMAKE_INSTALL_PREFIX=~/opt -DPP_TEST=OFF
+make install
+```
+
+### Add To CMake At Buildtime
+
+Add the following snippet to your cmake file and add `pp::pp` to your targets.
+
+```
+include(FetchContent)
+FetchContent_Declare(cpp_core_pp GIT_REPOSITORY https://cpp-core/pp GIT_TAG main FIND_PACKAGE_ARGS)
+FetchContent_MakeAvailable(cpp_core_pp)
+```
+
+### Add As Cpp-Core Package
+
+Add the following snippet to your cmake file. You can then include any
+compatible library with the `add_repo` call.
+
+```
+if(NOT CPP_CORE_CMAKE_DIR)
+  include(FetchContent)
+  set(NAME cpp_core_cmake)
+  FetchContent_Declare(
+    ${NAME}
+    GIT_REPOSITORY https://github.com/cpp-core/cmake
+    GIT_TAG main
+    )
+  FetchContent_MakeAvailable(${NAME})
+  set(CPP_CORE_CMAKE_DIR ${CMAKE_BINARY_DIR}/_deps/${NAME}-src)
+endif()
+
+include(${CPP_CORE_CMAKE_DIR}/utils/all.cmake)
+include(${CPP_CORE_CMAKE_DIR}/recipes/all.cmake)
+
+add_repo(cpp-core/pp)
 ```
 
 ## Tutorial
