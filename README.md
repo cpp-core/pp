@@ -3,6 +3,10 @@
 
 # `C` Preprocessor Primitives for Structured Programming
 * [Motivation](#motivation)
+* [Tutorial](#tutorial)
+* [Installation](#installation)
+  * [Local Test And Install](#local-test-and-install)
+  * [Local Install Only](#local-install-only)
 * [Documentation](https://cpp-core.github.io/pp/)
 
 ## Motivation
@@ -41,6 +45,9 @@ template<> class MyClass<int>; template<> class MyClass<long int>; template<> cl
 
 Yes, if only we could get the preprocessor to emit some newlines.
 
+## Tutorial
+
+
 ## Installation
 
 ### Local Test and Install
@@ -62,7 +69,7 @@ CC=clang-mp-16 CXX=clang++-mp-16 cmake .. -DCMAKE_INSTALL_PREFIX=~/opt -DPP_TEST
 make install
 ```
 
-### Add To CMake At Buildtime
+### Use FetchContent To Add At Cmake Buildtime
 
 Add the following snippet to your cmake file and add `pp::pp` to your targets.
 
@@ -72,7 +79,7 @@ FetchContent_Declare(cpp_core_pp GIT_REPOSITORY https://cpp-core/pp GIT_TAG main
 FetchContent_MakeAvailable(cpp_core_pp)
 ```
 
-### Add As Cpp-Core Package
+### Use Cpp-Core Manager To Add Any Compatible Repo
 
 Add the following snippet to your cmake file. You can then include any
 compatible library with the `add_repo` call.
@@ -95,6 +102,4 @@ include(${CPP_CORE_CMAKE_DIR}/recipes/all.cmake)
 
 add_repo(cpp-core/pp)
 ```
-
-## Tutorial
 
